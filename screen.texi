@@ -32,16 +32,8 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 
   当你启动 Emacs 时，框架中通常只有一个窗口。但是，您可以水平或垂直切分此窗口以创建多个窗口，每个窗口可以独立显示一个缓冲区(@pxref{Windows}).
 
-  At any time, one window is the @dfn{selected window}.  On a
-graphical display, the selected window shows a more prominent cursor
-(usually solid and blinking); other windows show a less prominent
-cursor (usually a hollow box).  On a text terminal, there is only one
-cursor, which is shown in the selected window.  The buffer displayed
-in the selected window is called the @dfn{current buffer}, and it is
-where editing happens.  Most Emacs commands implicitly apply to the
-current buffer; the text displayed in unselected windows is mostly
-visible for reference.  If you use multiple frames on a graphical
-display, selecting a particular frame selects a window in that frame.
+  在任何时候，一个窗格都是 @dfn{选定的窗格}。在图形显示屏上，选中的窗格会显示一个比较显眼的光标（通常是实心和闪烁的）；其他窗格则显示一个不太显眼的光标（通常是空心方框）。在文本终端上，只有一个光标，显示在选定的窗格中。选定窗口中显示的缓冲区称为 @dfn{当前缓冲区}，是进行编辑的地方。
+进行编辑的地方。大多数 Emacs 命令都会隐式应用于当前缓冲区；未选中窗口中显示的大多数文本都是可见的，以供参考。如果在图形显示屏上使用了多个窗口，则选择特定窗口将选择该窗口中的所有窗口。
 
 @menu
 * Point::             The place in the text where editing commands operate.
@@ -51,7 +43,7 @@ display, selecting a particular frame selects a window in that frame.
 @end menu
 
 @node Point
-@section Point
+@section 光标
 @cindex point
 @cindex cursor
 
