@@ -30,7 +30,7 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 
   Emacs 窗格是 @dfn{ 缓冲区}--即您正在编辑或查看的文本或其他图像--显示的地方。显示的地方。 在图形 窗格的一侧有一个 @dfn{滚动条}，可以用来滚动缓冲区。可用于滚动缓冲区。 窗格的最后一行 是 @dfn{状态栏}。 它显示缓冲区中的各种信息 缓冲区中正在进行的操作，例如是否有未保存的更改、正在使用的编辑模式、是否有已保存的更改。正在使用的编辑状态栏、当前行号等。
 
-  When you start Emacs, there is normally only one window in the frame.  However, you can subdivide this window horizontally or vertically to create multiple windows, each of which can independently display a buffer (@pxref{Windows}).
+  当你启动 Emacs 时，框架中通常只有一个窗口。但是，您可以水平或垂直切分此窗口以创建多个窗口，每个窗口可以独立显示一个缓冲区(@pxref{Windows}).
 
   At any time, one window is the @dfn{selected window}.  On a
 graphical display, the selected window shows a more prominent cursor
