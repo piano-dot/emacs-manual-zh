@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!-- 这是 GNU Emacs 手册,
+为 Emacs  29.2 更新
+
+英文原版版权提示 - Original English version copyright note
+
+Copyright © 1985-2024 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+
+中文翻译版版权提示 - Chinese translation revision copyright notice
+
+版权所有 © 1985-2024 林羿轩(Ralph Lin).
+
+您有在 Free Software Foundation发布的GNU Free Documentation License 第1.3版或之后版本的约束下对其进行再发布及修的权利。 恒定章节为 "The GNU Manifesto," "分发" "(中文版)GNU GENERAL PUBLIC LICENSE" 和
+"GNU GENERAL PUBLIC LICENSE" , 前封面文字为 "A GNU
+Manual,"后封面文字如下(a).  本书的FDL许可证可以在 "GNU Free Documentation
+License."找到.
+
+(a) FSF的后封面文字为: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+ -->
+<title>38 Document Viewing (GNU Emacs Manual)</title>
+
+<meta name="description" content="38 Document Viewing (GNU Emacs Manual)"/>
+<meta name="keywords" content="38 Document Viewing (GNU Emacs Manual)"/>
+<meta name="resource-type" content="document"/>
+<meta name="distribution" content="global"/>
+<meta name="Generator" content="texi2any"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<link href="emacs.xhtml" rel="start" title="Emacs 编辑器"/>
+<link href="Key-Index.xhtml" rel="index" title="Key (Character) Index"/>
+<link href="emacs.xhtml#SEC_Contents" rel="contents" title="Table of Contents"/>
+<link href="emacs.xhtml" rel="up" title="Emacs 编辑器"/>
+<link href="Shell.xhtml#Shell" rel="next" title="39 Running Shell Commands from Emacs"/>
+<link href="Network-Security.xhtml" rel="prev" title="37 Network Security"/>
+<style type="text/css">
+<!--
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+-->
+</style>
+
+
+</head>
+
+<body lang="zh_CN">
+<div class="chapter-level-extent" id="Document-View">
+
+<h2 class="chapter section-level-set-chapter" id="Document-Viewing">38 Document Viewing</h2>
+<a class="index-entry-id" id="index-DVI-file"></a>
+<a class="index-entry-id" id="index-PDF-file"></a>
+<a class="index-entry-id" id="index-PS-file"></a>
+<a class="index-entry-id" id="index-PostScript-file"></a>
+<a class="index-entry-id" id="index-OpenDocument-file"></a>
+<a class="index-entry-id" id="index-Microsoft-Office-file"></a>
+<a class="index-entry-id" id="index-EPUB-file"></a>
+<a class="index-entry-id" id="index-CBZ-file"></a>
+<a class="index-entry-id" id="index-FB2-file"></a>
+<a class="index-entry-id" id="index-XPS-file"></a>
+<a class="index-entry-id" id="index-OXPS-file"></a>
+<a class="index-entry-id" id="index-DocView-mode"></a>
+<a class="index-entry-id" id="index-mode_002c-DocView"></a>
+<a class="index-entry-id" id="index-document-viewer-_0028DocView_0029"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dmode"></a>
+
+<p>DocView mode is a major mode for viewing DVI, PostScript (PS), PDF,
+OpenDocument, Microsoft Office, EPUB, CBZ, FB2, XPS and OXPS
+documents.  It provides features such as slicing, zooming, and
+searching inside documents.  It works by converting the document to a
+set of images using the <code class="command">gs</code> (GhostScript) or
+<code class="command">pdfdraw</code>/<code class="command">mutool draw</code> (MuPDF) commands and other
+external tools, and then displays those converted images.
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dtoggle_002ddisplay"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dminor_002dmode"></a>
+<p>When you visit a document file that can be displayed with DocView
+mode, Emacs automatically uses that mode <a class="footnote" id="DOCF20" href="#FOOT20"><sup>20</sup></a>.  As an exception, when you visit a PostScript file, Emacs
+switches to PS mode, a major mode for editing PostScript files as
+text; however, it also enables DocView minor mode, so you can type
+<kbd class="kbd">C-c C-c</kbd> to view the document with DocView.  In either DocView
+mode or DocView minor mode, repeating <kbd class="kbd">C-c C-c</kbd>
+(<code class="code">doc-view-toggle-display</code>) toggles between DocView and the
+underlying file contents.
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dopen_002dtext"></a>
+<p>When you visit a file which would normally be handled by DocView
+mode but some requirement is not met (e.g., you operate in a terminal
+frame or Emacs has no PNG support), you are queried if you want to
+view the document&#8217;s contents as plain text.  If you confirm, the
+buffer is put in text mode and DocView minor mode is activated.  Thus,
+by typing <kbd class="kbd">C-c C-c</kbd> you switch to the fallback mode.  With another
+<kbd class="kbd">C-c C-c</kbd> you return to DocView mode.  The plain text contents can
+also be displayed from within DocView mode by typing <kbd class="kbd">C-c C-t</kbd>
+(<code class="code">doc-view-open-text</code>).
+</p>
+<p>You can explicitly enable DocView mode with the command <kbd class="kbd">M-x
+doc-view-mode</kbd>.  You can toggle DocView minor mode with <kbd class="kbd">M-x
+doc-view-minor-mode</kbd>.
+</p>
+<p>When DocView mode starts, it displays a welcome screen and begins
+formatting the file, page by page.  It displays the first page once
+that has been formatted.
+</p>
+<p>To kill the DocView buffer, type <kbd class="kbd">k</kbd>
+(<code class="code">doc-view-kill-proc-and-buffer</code>).  To bury it, type <kbd class="kbd">q</kbd>
+(<code class="code">quit-window</code>).
+</p>
+
+<div class="section-level-extent" id="DocView-Navigation">
+<h3 class="section subsection-level-set-section" id="DocView-Navigation-1">38.1 DocView Navigation</h3>
+
+<p>In DocView mode, you can scroll the current page using the usual
+Emacs movement keys: <kbd class="kbd">C-p</kbd>, <kbd class="kbd">C-n</kbd>, <kbd class="kbd">C-b</kbd>, <kbd class="kbd">C-f</kbd>, and
+the arrow keys.
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dcontinuous"></a>
+<p>By default, the line-motion keys <kbd class="kbd">C-p</kbd> and <kbd class="kbd">C-n</kbd> stop
+scrolling at the beginning and end of the current page, respectively.
+However, if you change the variable <code class="code">doc-view-continuous</code> to a
+non-<code class="code">nil</code> value, then <kbd class="kbd">C-p</kbd> displays the previous page if you
+are already at the beginning of the current page, and <kbd class="kbd">C-n</kbd>
+displays the next page if you are at the end of the current page.
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dnext_002dpage"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dprevious_002dpage"></a>
+<a class="index-entry-id" id="index-n-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-p-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-PageDown-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-PageUp-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-next-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-prior-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-C_002dx-_005d-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-C_002dx-_005b-_0028DocView-mode_0029"></a>
+<p>You can also display the next page by typing <kbd class="kbd">n</kbd>,
+<kbd class="key">PageDown</kbd>, <kbd class="key">next</kbd> or <kbd class="kbd">C-x ]</kbd> (<code class="code">doc-view-next-page</code>).
+To display the previous page, type <kbd class="kbd">p</kbd>, <kbd class="key">PageUp</kbd>, <kbd class="key">prior</kbd>
+or <kbd class="kbd">C-x [</kbd> (<code class="code">doc-view-previous-page</code>).
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dscroll_002dup_002dor_002dnext_002dpage"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dscroll_002ddown_002dor_002dprevious_002dpage"></a>
+<a class="index-entry-id" id="index-SPC-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-DEL-_0028DocView-mode_0029"></a>
+<p><kbd class="key">SPC</kbd> (<code class="code">doc-view-scroll-up-or-next-page</code>) is a convenient
+way to advance through the document.  It scrolls within the current
+page or advances to the next.  <kbd class="key">DEL</kbd> moves backwards in a similar
+way (<code class="code">doc-view-scroll-down-or-previous-page</code>).
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dfirst_002dpage"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dlast_002dpage"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dgoto_002dpage"></a>
+<a class="index-entry-id" id="index-M_002d_003c-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-M_002d_003e-_0028DocView-mode_0029"></a>
+<p>To go to the first page, type <kbd class="kbd">M-&lt;</kbd>
+(<code class="code">doc-view-first-page</code>); to go to the last one, type <kbd class="kbd">M-&gt;</kbd>
+(<code class="code">doc-view-last-page</code>).  To jump to a page by its number, type
+<kbd class="kbd">M-g M-g</kbd> or <kbd class="kbd">M-g g</kbd> (<code class="code">doc-view-goto-page</code>).
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002denlarge"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dshrink"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dresolution"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dscale_002dinternally"></a>
+<a class="index-entry-id" id="index-_002b-_0028DocView-mode_0029"></a>
+<a class="index-entry-id" id="index-_002d-_0028DocView-mode_0029"></a>
+<p>You can enlarge or shrink the document with <kbd class="kbd">+</kbd>
+(<code class="code">doc-view-enlarge</code>) and <kbd class="kbd">-</kbd> (<code class="code">doc-view-shrink</code>).  By
+default, these commands just rescale the already-rendered image.  If
+you instead want the image to be re-rendered at the new size, set
+<code class="code">doc-view-scale-internally</code> to <code class="code">nil</code>.  To specify the
+default size for DocView, customize the variable
+<code class="code">doc-view-resolution</code>.
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dimenu_002denabled"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dimenu_002dflatten"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dimenu_002dformat"></a>
+<p>When the <code class="command">mutool</code> program is available, DocView will use it
+to generate entries for an outline menu, making it accessible via the
+<code class="code">imenu</code> facility (see <a class="pxref" href="Programs.xhtml#Imenu">Imenu</a>).  To disable this functionality
+even when <code class="command">mutool</code> can be found on your system, customize the
+variable <code class="code">doc-view-imenu-enabled</code> to the <code class="code">nil</code> value.  You
+can further customize how <code class="code">imenu</code> items are formatted and
+displayed using the variables <code class="code">doc-view-imenu-format</code> and
+<code class="code">doc-view-flatten</code>.
+</p>
+</div>
+<div class="section-level-extent" id="DocView-Searching">
+<h3 class="section subsection-level-set-section" id="DocView-Searching-1">38.2 DocView Searching</h3>
+
+<p>In DocView mode, you can search the file&#8217;s text for a regular
+expression (see <a class="pxref" href="Search.xhtml#Regexps">Syntax of Regular Expressions</a>).  The interface for searching is inspired
+by <code class="code">isearch</code> (see <a class="pxref" href="Search.xhtml#Incremental-Search">Incremental Search</a>).
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dsearch"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dsearch_002dbackward"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dshow_002dtooltip"></a>
+<p>To begin a search, type <kbd class="kbd">C-s</kbd> (<code class="code">doc-view-search</code>) or
+<kbd class="kbd">C-r</kbd> (<code class="code">doc-view-search-backward</code>).  This reads a regular
+expression using a minibuffer, then echoes the number of matches found
+within the document.  You can move forward and back among the matches
+by typing <kbd class="kbd">C-s</kbd> and <kbd class="kbd">C-r</kbd>.  DocView mode has no way to show
+the match inside the page image; instead, it displays a tooltip (at
+the mouse position) listing all matching lines in the current page.
+To force display of this tooltip, type <kbd class="kbd">C-t</kbd>
+(<code class="code">doc-view-show-tooltip</code>).
+</p>
+<p>To start a new search, use the search command with a prefix
+argument; i.e., <kbd class="kbd">C-u C-s</kbd> for a forward search or <kbd class="kbd">C-u C-r</kbd>
+for a backward search.
+</p>
+</div>
+<div class="section-level-extent" id="DocView-Slicing">
+<h3 class="section subsection-level-set-section" id="DocView-Slicing-1">38.3 DocView Slicing</h3>
+
+<p>Documents often have wide margins for printing.  They are annoying
+when reading the document on the screen, because they use up screen
+space and can cause inconvenient scrolling.
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dset_002dslice"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dset_002dslice_002dusing_002dmouse"></a>
+<p>With DocView you can hide these margins by selecting a <em class="dfn">slice</em>
+of pages to display.  A slice is a rectangle within the page area;
+once you specify a slice in DocView, it applies to whichever page you
+look at.
+</p>
+<p>To specify the slice numerically, type <kbd class="kbd">c s</kbd>
+(<code class="code">doc-view-set-slice</code>); then enter the top left pixel position
+and the slice&#8217;s width and height.
+</p>
+<p>A more convenient graphical way to specify the slice is with <kbd class="kbd">c
+m</kbd> (<code class="code">doc-view-set-slice-using-mouse</code>), where you use the mouse to
+select the slice.  Simply press and hold the left mouse button at the
+upper-left corner of the region you want to have in the slice, then
+move the mouse pointer to the lower-right corner and release the
+button.
+</p>
+<p>The most convenient way is to set the optimal slice by using
+BoundingBox information automatically determined from the document by
+typing <kbd class="kbd">c b</kbd> (<code class="code">doc-view-set-slice-from-bounding-box</code>).
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dreset_002dslice"></a>
+<p>To cancel the selected slice, type <kbd class="kbd">c r</kbd>
+(<code class="code">doc-view-reset-slice</code>).  Then DocView shows the entire page
+including its entire margins.
+</p>
+</div>
+<div class="section-level-extent" id="DocView-Conversion">
+<h3 class="section subsection-level-set-section" id="DocView-Conversion-1">38.4 DocView Conversion</h3>
+
+<a class="index-entry-id" id="index-doc_002dview_002dcache_002ddirectory"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dclear_002dcache"></a>
+<p>For efficiency, DocView caches the images produced by <code class="command">gs</code>.
+The name of the directory where it caches images is given by the variable
+<code class="code">doc-view-cache-directory</code>.  You can clear the cache directory by
+typing <kbd class="kbd">M-x doc-view-clear-cache</kbd>.
+</p>
+<a class="index-entry-id" id="index-doc_002dview_002dkill_002dproc"></a>
+<a class="index-entry-id" id="index-doc_002dview_002dkill_002dproc_002dand_002dbuffer"></a>
+<p>To force reconversion of the currently viewed document, type <kbd class="kbd">r</kbd>
+or <kbd class="kbd">g</kbd> (<code class="code">revert-buffer</code>).  To kill the converter process
+associated with the current buffer, type <kbd class="kbd">K</kbd>
+(<code class="code">doc-view-kill-proc</code>).  The command <kbd class="kbd">k</kbd>
+(<code class="code">doc-view-kill-proc-and-buffer</code>) kills the converter process and
+the DocView buffer.
+</p>
+</div>
+</div>
+<div class="footnotes-segment">
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT20" href="#DOCF20">(20)</a></h5>
+<p>The needed
+external tools for the document type must be available, and Emacs must
+be running in a graphical frame and have PNG image support.  If these
+requirements is not fulfilled, Emacs falls back to another major
+mode.</p>
+</div>
+
+
+
+</body>
+</html>

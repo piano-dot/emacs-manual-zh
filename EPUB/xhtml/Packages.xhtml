@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!-- 这是 GNU Emacs 手册,
+为 Emacs  29.2 更新
+
+英文原版版权提示 - Original English version copyright note
+
+Copyright © 1985-2024 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+
+中文翻译版版权提示 - Chinese translation revision copyright notice
+
+版权所有 © 1985-2024 林羿轩(Ralph Lin).
+
+您有在 Free Software Foundation发布的GNU Free Documentation License 第1.3版或之后版本的约束下对其进行再发布及修的权利。 恒定章节为 "The GNU Manifesto," "分发" "(中文版)GNU GENERAL PUBLIC LICENSE" 和
+"GNU GENERAL PUBLIC LICENSE" , 前封面文字为 "A GNU
+Manual,"后封面文字如下(a).  本书的FDL许可证可以在 "GNU Free Documentation
+License."找到.
+
+(a) FSF的后封面文字为: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+ -->
+<title>49 Emacs Lisp Packages (GNU Emacs Manual)</title>
+
+<meta name="description" content="49 Emacs Lisp Packages (GNU Emacs Manual)"/>
+<meta name="keywords" content="49 Emacs Lisp Packages (GNU Emacs Manual)"/>
+<meta name="resource-type" content="document"/>
+<meta name="distribution" content="global"/>
+<meta name="Generator" content="texi2any"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<link href="emacs.xhtml" rel="start" title="Emacs 编辑器"/>
+<link href="Key-Index.xhtml" rel="index" title="Key (Character) Index"/>
+<link href="emacs.xhtml#SEC_Contents" rel="contents" title="Table of Contents"/>
+<link href="emacs.xhtml" rel="up" title="Emacs 编辑器"/>
+<link href="Customization.xhtml#Customization" rel="next" title="50 Customization"/>
+<link href="Amusements.xhtml" rel="prev" title="48 Games and Other Amusements"/>
+<style type="text/css">
+<!--
+div.example {margin-left: 3.2em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="zh_CN">
+<div class="chapter-level-extent" id="Packages">
+
+<h2 class="chapter" id="Emacs-Lisp-Packages">49 Emacs Lisp Packages</h2>
+<a class="index-entry-id" id="index-Package"></a>
+<a class="index-entry-id" id="index-Package-archive"></a>
+
+<p>Emacs is extended by implementing additional features in
+<em class="dfn">packages</em>, which are Emacs Lisp libraries.  These could be
+written by you or provided by someone else.  If you want to install
+such a package so it is available in your future Emacs session, you
+need to compile it and put it in a directory where Emacs looks for
+Lisp libraries.  See <a class="xref" href="Building.xhtml#Lisp-Libraries">Libraries of Lisp Code for Emacs</a>, for more details about this
+manual installation method.  Many packages provide installation and
+usage instructions in the large commentary near the beginning of the
+Lisp file; you can use those instructions for installing and
+fine-tuning your use of the package.
+</p>
+<a class="index-entry-id" id="index-Emacs-Lisp-package-archive"></a>
+<p>Packages can also be provided by <em class="dfn">package archives</em>, which are
+large collections of Emacs Lisp packages.  Each package is a separate
+Emacs Lisp program, sometimes including other components such as an
+Info manual.  Emacs includes a facility that lets you easily download
+and install packages from such archives.  The rest of this chapter
+describes this facility.
+</p>
+<p>To list the packages available for installation from package
+archives, type <kbd class="kbd">M-x&#160;list-packages&#160;<kbd class="key">RET</kbd></kbd><!-- /@w -->.  It brings up a
+buffer named <samp class="file">*Packages*</samp> with a list of all packages.  You can
+install or uninstall packages via this buffer.  See <a class="xref" href="#Package-Menu">The Package Menu Buffer</a>.
+</p>
+<p>The command <kbd class="kbd">C-h P</kbd> (<code class="code">describe-package</code>) prompts for the
+name of a package, and displays a help buffer describing the
+attributes of the package and the features that it implements.
+</p>
+<p>By default, Emacs downloads packages from a package archive
+maintained by the Emacs developers and hosted by the GNU project.
+Optionally, you can also download packages from archives maintained by
+third parties.  See <a class="xref" href="#Package-Installation">Package Installation</a>.
+</p>
+<p>For information about turning an Emacs Lisp program into an
+installable package, See <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Packaging.html#Packaging">Packaging</a> in <cite class="cite">The Emacs Lisp Reference
+Manual</cite>.
+</p>
+
+<div class="section-level-extent" id="Package-Menu">
+<h3 class="section" id="The-Package-Menu-Buffer">49.1 The Package Menu Buffer</h3>
+<a class="index-entry-id" id="index-package-menu"></a>
+<a class="index-entry-id" id="index-built_002din-package"></a>
+<a class="index-entry-id" id="index-list_002dpackages"></a>
+
+<p>The command <kbd class="kbd">M-x list-packages</kbd> brings up the <em class="dfn">package menu</em>.
+This is a buffer listing all the packages that Emacs knows about, one
+on each line, with the following information:
+</p>
+<ul class="itemize mark-bullet">
+<li>The package name (e.g., &#8216;<samp class="samp">auctex</samp>&#8217;).
+
+</li><li>The package&#8217;s version number (e.g., &#8216;<samp class="samp">11.86</samp>&#8217;).
+
+</li><li>The package&#8217;s status&#8212;normally one of &#8216;<samp class="samp">available</samp>&#8217; (can be
+downloaded from the package archive), &#8216;<samp class="samp">installed</samp>&#8217;,
+or &#8216;<samp class="samp">built-in</samp>&#8217; (included in Emacs by default).
+See <a class="xref" href="#Package-Statuses">Package Statuses</a>.
+
+</li><li>Which package archive this package is from, if you have more than one
+package archive enabled.
+
+</li><li>A short description of the package.
+</li></ul>
+
+<p>The <code class="code">list-packages</code> command accesses the network, to retrieve the
+list of available packages from package archive servers.  If the
+network is unavailable, it falls back on the most recently retrieved
+list.
+</p>
+<p>The main command to use in the package list buffer is the <kbd class="key">x</kbd>
+command.  If the package under point isn&#8217;t installed already, this
+command will install it.  If the package under point is already
+installed, this command will delete it.
+</p>
+<p>The following commands are available in the package menu:
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dquick_002dhelp"></a>
+<a id="index-h-_0028Package-Menu_0029"></a><kbd class="kbd">h</kbd></dt>
+<dd><p>Print a short message summarizing how to use the package menu
+(<code class="code">package-menu-quick-help</code>).
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-RET-_0028Package-Menu_0029"></a>
+<a class="index-entry-id" id="index-package_002dmenu_002ddescribe_002dpackage"></a>
+<a id="index-_003f-_0028Package-Menu_0029"></a><kbd class="kbd">?</kbd></dt>
+<dt><kbd class="kbd"><kbd class="key">RET</kbd></kbd></dt>
+<dd><p>Display a help buffer for the package on the current line
+(<code class="code">package-menu-describe-package</code>), similar to the help window
+displayed by the <kbd class="kbd">C-h P</kbd> command (see <a class="pxref" href="#Packages">Emacs Lisp Packages</a>).
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dmark_002dinstall"></a>
+<a id="index-i-_0028Package-Menu_0029"></a><kbd class="kbd">i</kbd></dt>
+<dd><p>Mark the package on the current line for installation
+(<code class="code">package-menu-mark-install</code>).  If the package status is
+&#8216;<samp class="samp">available</samp>&#8217;, this adds an &#8216;<samp class="samp">I</samp>&#8217; character to the start of the
+line; typing <kbd class="kbd">x</kbd> (see below) will download and install the
+package.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dmark_002ddelete"></a>
+<a id="index-d-_0028Package-Menu_0029"></a><kbd class="kbd">d</kbd></dt>
+<dd><p>Mark the package on the current line for deletion
+(<code class="code">package-menu-mark-delete</code>).  If the package status is
+&#8216;<samp class="samp">installed</samp>&#8217;, this adds a &#8216;<samp class="samp">D</samp>&#8217; character to the start of the
+line; typing <kbd class="kbd">x</kbd> (see below) will delete the package.
+See <a class="xref" href="#Package-Files">Package Files and Directory Layout</a>, for information about what package deletion
+entails.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dbrowse_002durl"></a>
+<a id="index-w-_0028Package-Menu_0029"></a><kbd class="kbd">w</kbd></dt>
+<dd><p>Open the package website on the current line in a browser
+(<code class="code">package-browse-url</code>).  <code class="code">browse-url</code> is used to open the
+browser.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dmark_002dobsolete_002dfor_002ddeletion"></a>
+<a id="index-_007e-_0028Package-Menu_0029"></a><kbd class="kbd">~</kbd></dt>
+<dd><p>Mark all obsolete packages for deletion
+(<code class="code">package-menu-mark-obsolete-for-deletion</code>).  This marks for
+deletion all the packages whose status is &#8216;<samp class="samp">obsolete</samp>&#8217;.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dmark_002dunmark"></a>
+<a id="index-u-_0028Package-Menu_0029"></a><kbd class="kbd">u</kbd></dt>
+<dt><kbd class="kbd"><kbd class="key">DEL</kbd></kbd></dt>
+<dd><p>Remove any installation or deletion mark previously added to the
+current line by an <kbd class="kbd">i</kbd> or <kbd class="kbd">d</kbd> command
+(<code class="code">package-menu-mark-unmark</code>).
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dmark_002dupgrades"></a>
+<a id="index-U-_0028Package-Menu_0029"></a><kbd class="kbd">U</kbd></dt>
+<dd><p>Mark all package with a newer available version for upgrading
+(<code class="code">package-menu-mark-upgrades</code>).  This places an installation mark
+on the new available versions, and a deletion mark on the old
+installed versions (marked with status &#8216;<samp class="samp">obsolete</samp>&#8217;).  By default,
+this won&#8217;t mark built-in packages for which a newer version is
+available, but customizing <code class="code">package-install-upgrade-built-in</code> can
+change that.  See <a class="xref" href="#Package-Installation">Package Installation</a>.  If you customize
+<code class="code">package-install-upgrade-built-in</code> to a non-<code class="code">nil</code> value, be
+sure to review all the built-in packages the <kbd class="kbd">U</kbd> command marks, to
+avoid updating built-in packages you don&#8217;t want to overwrite.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dasync"></a>
+<a class="index-entry-id" id="index-package_002dmenu_002dexecute"></a>
+<a id="index-x-_0028Package-Menu_0029"></a><kbd class="kbd">x</kbd></dt>
+<dd><p>Download and install all packages marked with <kbd class="kbd">i</kbd>, and their
+dependencies; also, delete all packages marked with <kbd class="kbd">d</kbd>
+(<code class="code">package-menu-execute</code>).  This also removes the marks.  If no
+packages are marked, this command will install the package under point
+(if it isn&#8217;t installed already), or delete the package under point (if
+it&#8217;s already installed).
+</p>
+</dd>
+<dt><kbd class="kbd">g</kbd></dt>
+<dt><a class="index-entry-id" id="index-r-_0028Package-Menu_0029"></a>
+<a id="index-g-_0028Package-Menu_0029"></a><kbd class="kbd">r</kbd></dt>
+<dd><p>Refresh the package list (<code class="code">revert-buffer</code>).  This fetches the
+list of available packages from the package archive again, and
+redisplays the package list.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dhide_002dpackage"></a>
+<a id="index-H-_0028Package-Menu_0029"></a><kbd class="kbd">H</kbd></dt>
+<dd><p>Hide packages whose names match a regexp
+(<code class="code">package-menu-hide-package</code>).  This prompts for a regexp, and
+then hides the packages with matching names.  The default value of the
+regexp will hide only the package whose name is at point, so just
+pressing <kbd class="key">RET</kbd> to the prompt will hide the current package.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dtoggle_002dhiding"></a>
+<a id="index-_0028-_0028Package-Menu_0029"></a><kbd class="kbd">(</kbd></dt>
+<dd><p>Toggle visibility of old versions of packages and also of versions
+from lower-priority archives (<code class="code">package-menu-toggle-hiding</code>).
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dby_002darchive"></a>
+<a id="index-_002f-a-_0028Package-Menu_0029"></a><kbd class="kbd">/ a</kbd></dt>
+<dd><p>Filter package list by archive (<code class="code">package-menu-filter-by-archive</code>).
+This prompts for a package archive (e.g., &#8216;<samp class="samp">gnu</samp>&#8217;), then shows only
+packages from that archive.  You can specify several archives by
+typing their names separated by commas.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dby_002ddescription"></a>
+<a id="index-_002f-d-_0028Package-Menu_0029"></a><kbd class="kbd">/ d</kbd></dt>
+<dd><p>Filter package list by description
+(<code class="code">package-menu-filter-by-description</code>).  This prompts for a
+regular expression, then shows only packages with descriptions
+matching that regexp.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dby_002dkeyword"></a>
+<a id="index-_002f-k-_0028Package-Menu_0029"></a><kbd class="kbd">/ k</kbd></dt>
+<dd><p>Filter package list by keyword (<code class="code">package-menu-filter-by-keyword</code>).
+This prompts for a keyword (e.g., &#8216;<samp class="samp">games</samp>&#8217;), then shows only
+packages with that keyword.  You can specify several keywords by
+typing them separated by commas.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dby_002dname_002dor_002ddescription"></a>
+<a id="index-_002f-N-_0028Package-Menu_0029"></a><kbd class="kbd">/ N</kbd></dt>
+<dd><p>Filter package list by name or description
+(<code class="code">package-menu-filter-by-name-or-description</code>).  This prompts for
+a regular expression, then shows only packages with a name or
+description matching that regexp.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dby_002dname"></a>
+<a id="index-_002f-n-_0028Package-Menu_0029"></a><kbd class="kbd">/ n</kbd></dt>
+<dd><p>Filter package list by name (<code class="code">package-menu-filter-by-name</code>).
+This prompts for a regular expression, then shows only packages
+with names matching that regexp.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dby_002dstatus"></a>
+<a id="index-_002f-s-_0028Package-Menu_0029"></a><kbd class="kbd">/ s</kbd></dt>
+<dd><p>Filter package list by status (<code class="code">package-menu-filter-by-status</code>).
+This prompts for one or more statuses (e.g., &#8216;<samp class="samp">available</samp>&#8217;,
+see <a class="pxref" href="#Package-Statuses">Package Statuses</a>), then shows only packages with matching
+status.  You can specify several status values by typing them
+separated by commas.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dby_002dversion"></a>
+<a id="index-_002f-v-_0028Package-Menu_0029"></a><kbd class="kbd">/ v</kbd></dt>
+<dd><p>Filter package list by version (<code class="code">package-menu-filter-by-version</code>).
+This prompts first for one of the comparison symbols &#8216;<samp class="samp">&lt;</samp>&#8217;,
+&#8216;<samp class="samp">&gt;</samp>&#8217; or &#8216;<samp class="samp">=</samp>&#8217; and for a version string, and then shows packages
+whose versions are correspondingly lower, equal or higher than the
+version you typed.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dmarked"></a>
+<a id="index-_002f-m-_0028Package-Menu_0029"></a><kbd class="kbd">/ m</kbd></dt>
+<dd><p>Filter package list by non-empty mark (<code class="code">package-menu-filter-marked</code>).
+This shows only the packages that have been marked to be installed or deleted.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dupgradable"></a>
+<a id="index-_002f-u-_0028Package-Menu_0029"></a><kbd class="kbd">/ u</kbd></dt>
+<dd><p>Filter package list to show only packages for which there are
+available upgrades (<code class="code">package-menu-filter-upgradable</code>).  By
+default, this filter excludes the built-in packages for which a newer
+version is available, but customizing
+<code class="code">package-install-upgrade-built-in</code> can change that.
+See <a class="xref" href="#Package-Installation">Package Installation</a>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-package_002dmenu_002dfilter_002dclear"></a>
+<a id="index-_002f-_002f-_0028Package-Menu_0029"></a><kbd class="kbd">/ /</kbd></dt>
+<dd><p>Clear filter currently applied to the package list
+(<code class="code">package-menu-filter-clear</code>).
+</p></dd>
+</dl>
+
+<p>For example, you can install a package by typing <kbd class="kbd">i</kbd> on the line
+listing that package, followed by <kbd class="kbd">x</kbd>.
+</p>
+</div>
+<div class="section-level-extent" id="Package-Statuses">
+<h3 class="section" id="Package-Statuses-1">49.2 Package Statuses</h3>
+<a class="index-entry-id" id="index-package-status"></a>
+
+<p>A package can have one of the following statuses:
+</p>
+<dl class="table">
+<dt>&#8216;<samp class="samp">available</samp>&#8217;</dt>
+<dd><p>The package is not installed, but can be downloaded and installed from
+the package archive.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">avail-obso</samp>&#8217;</dt>
+<dd><p>The package is available for installation, but a newer version is also
+available.  Packages with this status are hidden by default.
+</p>
+</dd>
+<dt><a id="index-built_002din-package-1"></a>&#8216;<samp class="samp">built-in</samp>&#8217;</dt>
+<dd><p>The package is included in Emacs by default.  It cannot be deleted
+through the package menu, and by default is not considered for
+upgrading (but you can change that by customizing
+<code class="code">package-install-upgrade-built-in</code>, see <a class="pxref" href="#Package-Installation">Package Installation</a>).
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">dependency</samp>&#8217;</dt>
+<dd><p>The package was installed automatically to satisfy a dependency of
+another package.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">disabled</samp>&#8217;</dt>
+<dd><p>The package has been disabled using the <code class="code">package-load-list</code>
+variable.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">external</samp>&#8217;</dt>
+<dd><p>The package is not built-in and not from the directory specified by
+<code class="code">package-user-dir</code> (see <a class="pxref" href="#Package-Files">Package Files and Directory Layout</a>).  External packages
+are treated much like &#8216;<samp class="samp">built-in</samp>&#8217; packages and cannot be deleted.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">held</samp>&#8217;</dt>
+<dd><p>The package is held, See <a class="xref" href="#Package-Installation">Package Installation</a>.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">incompat</samp>&#8217;</dt>
+<dd><p>The package cannot be installed for some reason, for example because
+it depends on uninstallable packages.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">installed</samp>&#8217;</dt>
+<dd><p>The package is installed.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">new</samp>&#8217;</dt>
+<dd><p>Equivalent to &#8216;<samp class="samp">available</samp>&#8217;, except that the package became newly
+available on the package archive after your last invocation of
+<kbd class="kbd">M-x list-packages</kbd>.
+</p>
+</dd>
+<dt>&#8216;<samp class="samp">obsolete</samp>&#8217;</dt>
+<dd><p>The package is an outdated installed version; in addition to this
+version of the package, a newer version is also installed.
+</p>
+</dd>
+</dl>
+
+</div>
+<div class="section-level-extent" id="Package-Installation">
+<h3 class="section" id="Package-Installation-1">49.3 Package Installation</h3>
+
+<a class="index-entry-id" id="index-package_002dinstall"></a>
+<a class="index-entry-id" id="index-package_002dupgrade"></a>
+<a class="index-entry-id" id="index-package_002dupgrade_002dall"></a>
+<p>Packages are most conveniently installed using the package menu
+(see <a class="pxref" href="#Package-Menu">The Package Menu Buffer</a>), but you can also use the command <kbd class="kbd">M-x
+package-install</kbd>.  This prompts for the name of a package with the
+&#8216;<samp class="samp">available</samp>&#8217; status, then downloads and installs it.  Similarly,
+if you want to upgrade a package, you can use the <kbd class="kbd">M-x
+package-upgrade</kbd> command, and if you want to upgrade all the packages,
+you can use the <kbd class="kbd">M-x package-upgrade-all</kbd> command.
+</p>
+<a class="index-entry-id" id="index-package_002dinstall_002dupgrade_002dbuilt_002din"></a>
+<p>By default, <code class="code">package-install</code> doesn&#8217;t consider built-in
+packages for which new versions are available from the archives.  (A
+package is built-in if it is included in the Emacs distribution.)  In
+particular, it will not show built-in packages in the list of
+completion candidates when you type at its prompt.  But if you invoke
+<code class="code">package-install</code> with a prefix argument, it will also consider
+built-in packages that can be upgraded.  You can make this behavior
+the default by customizing the variable
+<code class="code">package-install-upgrade-built-in</code>: if its value is
+non-<code class="code">nil</code>, <code class="code">package-install</code> will consider built-in packages
+even when invoked without a prefix argument.  Note that the
+package-menu commands (see <a class="pxref" href="#Package-Menu">The Package Menu Buffer</a>) are also affected by
+<code class="code">package-install-upgrade-built-in</code>.
+</p>
+<p>By contrast, <code class="code">package-upgrade</code> and <code class="code">package-upgrade-all</code>
+never consider built-in packages.  If you want to use these commands
+for upgrading some built-in packages, you need to upgrade each of
+those packages, once, either via <kbd class="kbd">C-u M-x package-install
+<kbd class="key">RET</kbd></kbd>, or by customizing <code class="code">package-install-upgrade-built-in</code>
+to a non-<code class="code">nil</code> value, and then upgrading the package once via the
+package menu or by <code class="code">package-install</code>.
+</p>
+<p>If you customize <code class="code">package-install-upgrade-built-in</code> to a
+non-<code class="code">nil</code> value, be very careful when using commands that update
+many packages at once, like <code class="code">package-upgrade-all</code> and <kbd class="kbd">U</kbd> in
+the package menu: those might overwrite built-in packages that you
+didn&#8217;t intent to replace with newer versions from the archives.  Don&#8217;t
+use these bulk commands if you want to update only a small number of
+built-in packages.
+</p>
+<a class="index-entry-id" id="index-package-requirements"></a>
+<p>A package may <em class="dfn">require</em> certain other packages to be installed,
+because it relies on functionality provided by them.  When Emacs
+installs such a package, it also automatically downloads and installs
+any required package that is not already installed.  (If a required
+package is somehow unavailable, Emacs signals an error and stops
+installation.)  A package&#8217;s requirements list is shown in its help
+buffer.
+</p>
+<a class="index-entry-id" id="index-package_002darchives"></a>
+<p>By default, packages are downloaded from a single package archive
+maintained by the Emacs developers.  This is controlled by the
+variable <code class="code">package-archives</code>, whose value is a list of package
+archives known to Emacs.  Each list element must have the form
+<code class="code">(<var class="var">id</var> . <var class="var">location</var>)</code>, where <var class="var">id</var> is the name of a
+package archive and <var class="var">location</var> is the <abbr class="acronym">URL</abbr> or
+name of the package archive directory.  You can alter this list if you
+wish to use third party package archives&#8212;but do so at your own risk,
+and use only third parties that you think you can trust!
+</p>
+<a class="anchor" id="Package-Signing"></a><a class="index-entry-id" id="index-package-security"></a>
+<a class="index-entry-id" id="index-package-signing"></a>
+<p>The maintainers of package archives can increase the trust that you
+can have in their packages by <em class="dfn">signing</em> them.  They generate a
+private/public pair of cryptographic keys, and use the private key to
+create a <em class="dfn">signature file</em> for each package.  With the public key, you
+can use the signature files to verify the package creator and make sure
+the package has not been tampered with.  Signature verification uses
+<a class="uref" href="https://www.gnupg.org/">the GnuPG package</a> via the EasyPG
+interface (see <a href="https://www.gnu.org/software/emacs/manual/html_node/epa/index.html#Top">EasyPG</a> in <cite class="cite">Emacs EasyPG Assistant Manual</cite>).
+A valid signature is not a cast-iron
+guarantee that a package is not malicious, so you should still
+exercise caution.  Package archives should provide instructions
+on how you can obtain their public key.  One way is to download the
+key from a server such as <a class="url" href="https://pgp.mit.edu/">https://pgp.mit.edu/</a>.
+Use <kbd class="kbd">M-x package-import-keyring</kbd> to import the key into Emacs.
+Emacs stores package keys in the directory specified by the variable
+<code class="code">package-gnupghome-dir</code>, by default in the <samp class="file">gnupg</samp>
+subdirectory of <code class="code">package-user-dir</code>, which causes Emacs to invoke
+GnuPG with the option &#8216;<samp class="samp">--homedir</samp>&#8217; when verifying signatures.
+If <code class="code">package-gnupghome-dir</code> is <code class="code">nil</code>, GnuPG&#8217;s option
+&#8216;<samp class="samp">--homedir</samp>&#8217; is omitted.
+The public key for the GNU package archive is distributed with Emacs,
+in the <samp class="file">etc/package-keyring.gpg</samp>.  Emacs uses it automatically.
+</p>
+<a class="index-entry-id" id="index-package_002dcheck_002dsignature"></a>
+<a class="index-entry-id" id="index-package_002dunsigned_002darchives"></a>
+<p>If the user option <code class="code">package-check-signature</code> is non-<code class="code">nil</code>,
+Emacs attempts to verify signatures when you install packages.  If the
+option has the value <code class="code">allow-unsigned</code>, and a usable OpenPGP
+configuration is found, signed packages will be checked, but you can
+still install a package that is not signed.  If you use some archives
+that do not sign their packages, you can add them to the list
+<code class="code">package-unsigned-archives</code>.  (If the value is
+<code class="code">allow-unsigned</code> and no usable OpenPGP is found, this option is
+treated as if its value was <code class="code">nil</code>.)  If the value is <code class="code">t</code>, at
+least one signature must be valid; if the value is <code class="code">all</code>, all of
+them must be valid.
+</p>
+<p>For more information on cryptographic keys and signing,
+see <a href="https://www.gnupg.org/documentation/manuals/gnupg/index.html#Top">GnuPG</a> in <cite class="cite">The GNU Privacy Guard Manual</cite>.
+Emacs comes with an interface to GNU Privacy Guard,
+see <a href="https://www.gnu.org/software/emacs/manual/html_node/epa/index.html#Top">EasyPG</a> in <cite class="cite">Emacs EasyPG Assistant Manual</cite>.
+</p>
+<a class="index-entry-id" id="index-package_002dpinned_002dpackages"></a>
+<p>If you have more than one package archive enabled, and some of them
+offer different versions of the same package, you may find the option
+<code class="code">package-pinned-packages</code> useful.  You can add package/archive
+pairs to this list, to ensure that the specified package is only ever
+downloaded from the specified archive.
+</p>
+<a class="index-entry-id" id="index-package_002darchive_002dpriorities"></a>
+<a class="index-entry-id" id="index-package_002dmenu_002dhide_002dlow_002dpriority"></a>
+<p>Another option that is useful when you have several package archives
+enabled is <code class="code">package-archive-priorities</code>.  It specifies the
+priority of each archive (higher numbers specify higher priority
+archives).  By default, archives have the priority of zero, unless
+specified otherwise by this option&#8217;s value.  Packages from
+lower-priority archives will not be shown in the menu, if the same
+package is available from a higher-priority archive.  (This is
+controlled by the value of <code class="code">package-menu-hide-low-priority</code>.)
+</p>
+<p>Once a package is downloaded, byte-compiled and installed, it is
+made available to the current Emacs session.  Making a package
+available adds its directory to <code class="code">load-path</code> and loads its
+autoloads.  The effect of a package&#8217;s autoloads varies from package to
+package.  Most packages just make some new commands available, while
+others have more wide-ranging effects on the Emacs session.  For such
+information, consult the package&#8217;s help buffer.
+</p>
+<p>Installed packages are automatically made available by Emacs in all
+subsequent sessions.  This happens at startup, before processing the
+init file but after processing the early init file (see <a class="pxref" href="Customization.xhtml#Early-Init-File">The Early Init File</a>).  As an exception, Emacs does not make packages available at
+startup if invoked with the &#8216;<samp class="samp">-q</samp>&#8217; or &#8216;<samp class="samp">--no-init-file</samp>&#8217; options
+(see <a class="pxref" href="Emacs-Invocation.xhtml#Initial-Options">Initial Options</a>).
+</p>
+<a class="index-entry-id" id="index-package_002denable_002dat_002dstartup"></a>
+<p>To keep Emacs from automatically making packages available at
+startup, change the variable <code class="code">package-enable-at-startup</code> to
+<code class="code">nil</code>.  You must do this in the early init file, as the variable
+is read before loading the regular init file.  Currently this variable
+cannot be set via Customize.
+</p>
+<a class="index-entry-id" id="index-package_002dquickstart_002drefresh"></a>
+<a class="index-entry-id" id="index-package_002dquickstart"></a>
+<p>If you have many packages installed, you can improve startup times
+by setting the user option <code class="code">package-quickstart</code> to <code class="code">t</code>.
+Setting this option will make Emacs precompute many things instead of
+re-computing them on every Emacs startup.  However, if you do this,
+then you have to manually run the command
+<code class="code">package-quickstart-refresh</code> when the activations need to be
+changed, such as when you change the value of
+<code class="code">package-load-list</code>.
+</p>
+<a class="index-entry-id" id="index-package_002dactivate_002dall"></a>
+<p>If you have set <code class="code">package-enable-at-startup</code> to <code class="code">nil</code>, you
+can still make packages available either during or after startup.  To
+make installed packages available during startup, call the function
+<code class="code">package-activate-all</code> in your init file.  To make installed
+packages available after startup, invoke the command <kbd class="kbd">M-:
+(package-activate-all) RET</kbd>.
+</p>
+<a class="index-entry-id" id="index-package_002dload_002dlist"></a>
+<p>For finer control over which packages are made available at startup,
+you can use the variable <code class="code">package-load-list</code>.  Its value should
+be a list.  A list element of the form <code class="code">(<var class="var">name</var>&#160;<var class="var">version</var>)</code><!-- /@w --> tells Emacs to make available version <var class="var">version</var> of
+the package named <var class="var">name</var>.  Here, <var class="var">version</var> should be a version
+string (corresponding to a specific version of the package), or
+<code class="code">t</code> (which means to make available any installed version), or
+<code class="code">nil</code> (which means no version; this disables the package,
+preventing it from being made available).  A list element can also be
+the symbol <code class="code">all</code>, which means to make available the latest
+installed version of any package not named by the other list elements.
+The default value is just <code class="code">'(all)</code>.
+</p>
+<p>For example, if you set <code class="code">package-load-list</code> to <code class="code">'((muse&#160;&quot;3.20&quot;)&#160;all)</code><!-- /@w -->, then Emacs only makes available version 3.20 of the
+&#8216;<samp class="samp">muse</samp>&#8217; package, plus any installed version of packages other than
+&#8216;<samp class="samp">muse</samp>&#8217;.  Any other version of &#8216;<samp class="samp">muse</samp>&#8217; that happens to be
+installed will be ignored.  The &#8216;<samp class="samp">muse</samp>&#8217; package will be listed in
+the package menu with the &#8216;<samp class="samp">held</samp>&#8217; status.
+</p>
+<a class="index-entry-id" id="index-package_002drecompile"></a>
+<a class="index-entry-id" id="index-package_002drecompile_002dall"></a>
+<p>Emacs byte code is quite stable, but it&#8217;s possible for byte code to
+become outdated, or for the compiled files to rely on macros that have
+changed in new versions of Emacs.  You can use the command <kbd class="kbd">M-x&#160;package-recompile</kbd><!-- /@w --> to recompile a particular package, or
+<kbd class="kbd">M-x&#160;package-recompile-all</kbd><!-- /@w --> to recompile all the packages.  (The
+latter command might take quite a while to run if you have many
+installed packages.)
+</p>
+</div>
+<div class="section-level-extent" id="Package-Files">
+<h3 class="section" id="Package-Files-and-Directory-Layout">49.4 Package Files and Directory Layout</h3>
+<a class="index-entry-id" id="index-package-directory"></a>
+
+<a class="index-entry-id" id="index-package-file"></a>
+<a class="index-entry-id" id="index-package_002dinstall_002dfile"></a>
+<p>Each package is downloaded from the package archive in the form of a
+single <em class="dfn">package file</em>&#8212;either an Emacs Lisp source file, or a tar
+file containing multiple Emacs Lisp source and other files.  Package
+files are automatically retrieved, processed, and disposed of by the
+Emacs commands that install packages.  Normally, you will not need to
+deal directly with them, unless you are making a package
+(see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Packaging.html#Packaging">Packaging</a> in <cite class="cite">The Emacs Lisp Reference Manual</cite>).  Should
+you ever need to install a package directly from a package file, use
+the command <kbd class="kbd">M-x package-install-file</kbd>.
+</p>
+<a class="index-entry-id" id="index-package_002duser_002ddir"></a>
+<p>Once installed, the contents of a package are placed in a
+subdirectory of <samp class="file">~/.emacs.d/elpa/</samp> (you can change the name of
+that directory by changing the variable <code class="code">package-user-dir</code>).  The
+package subdirectory is named <samp class="file"><var class="var">name</var>-<var class="var">version</var></samp>, where
+<var class="var">name</var> is the package name and <var class="var">version</var> is its version
+string.
+</p>
+<a class="index-entry-id" id="index-system_002dwide-packages"></a>
+<a class="index-entry-id" id="index-package_002ddirectory_002dlist"></a>
+<p>In addition to <code class="code">package-user-dir</code>, Emacs looks for installed
+packages in the directories listed in <code class="code">package-directory-list</code>.
+These directories are meant for system administrators to make Emacs
+packages available system-wide; Emacs itself never installs packages
+there.  The package subdirectories for <code class="code">package-directory-list</code>
+are laid out in the same way as in <code class="code">package-user-dir</code>.
+</p>
+<p>Deleting a package (see <a class="pxref" href="#Package-Menu">The Package Menu Buffer</a>) involves deleting the
+corresponding package subdirectory.  This only works for packages
+installed in <code class="code">package-user-dir</code>; if told to act on a package in a
+system-wide package directory, the deletion command signals an error.
+</p>
+</div>
+<div class="section-level-extent" id="Fetching-Package-Sources">
+<h3 class="section" id="Fetching-Package-Sources-1">49.5 Fetching Package Sources</h3>
+<a class="index-entry-id" id="index-package-development-source"></a>
+<a class="index-entry-id" id="index-upstream-source_002c-for-packages"></a>
+<a class="index-entry-id" id="index-git-source-of-package"></a>
+
+<p>By default <code class="code">package-install</code> downloads a Tarball from a package
+archive and installs its files.  This might be inadequate if you wish
+to hack on the package sources and share your changes with others.  In
+that case, you may prefer to directly fetch and work on the upstream
+source.  This often makes it easier to develop patches and report
+bugs.
+</p>
+<a class="index-entry-id" id="index-package_002dvc_002dinstall"></a>
+<a class="index-entry-id" id="index-package_002dvc_002dcheckout"></a>
+<p>One way to do this is to use <code class="code">package-vc-install</code>, to fetch the
+source code for a package directly from source.  The command will also
+automatically ensure that all files are byte-compiled and auto-loaded,
+just like with a regular package.  Packages installed this way behave
+just like any other package.  You can upgrade them using
+<code class="code">package-upgrade</code> or <code class="code">package-upgrade-all</code> and delete them
+again using <code class="code">package-delete</code>.  They are even displayed in the
+regular package listing.  If you just wish to clone the source of a
+package, without adding it to the package list, use
+<code class="code">package-vc-checkout</code>.
+</p>
+<a class="index-entry-id" id="index-package_002dreport_002dbug"></a>
+<a class="index-entry-id" id="index-package_002dvc_002dprepare_002dpatch"></a>
+<p>With the source checkout, you might want to reproduce a bug against
+the current development head or implement a new feature to scratch an
+itch.  If the package metadata indicates how to contact the
+maintainer, you can use the command <code class="code">package-report-bug</code> to
+report a bug via Email.  This report will include all the user options
+that you have customized.  If you have made a change you wish to share
+with the maintainers, first commit your changes then use the command
+<code class="code">package-vc-prepare-patch</code> to share it.  See <a class="xref" href="Maintaining.xhtml#Preparing-Patches">Preparing Patches</a>.
+</p>
+<a class="index-entry-id" id="index-package_002dvc_002dinstall_002dfrom_002dcheckout"></a>
+<a class="index-entry-id" id="index-package_002dvc_002drebuild"></a>
+<p>If you maintain your own packages you might want to use a local
+checkout instead of cloning a remote repository.  You can do this by
+using <code class="code">package-vc-install-from-checkout</code>, which creates a symbolic link
+from the package directory (see <a class="pxref" href="#Package-Files">Package Files and Directory Layout</a>) to your checkout
+and initializes the code.  Note that you might have to use
+<code class="code">package-vc-rebuild</code> to repeat the initialization and update the
+autoloads.
+</p>
+<div class="subsection-level-extent" id="Specifying-Package-Sources">
+<h4 class="subsection">49.5.1 Specifying Package Sources</h4>
+<a class="index-entry-id" id="index-package-specification"></a>
+<a class="index-entry-id" id="index-specification_002c-for-source-packages"></a>
+
+<p>To install a package from source, Emacs must know where to get the
+package&#8217;s source code (such as a code repository) and basic
+information about the structure of the code (such as the main file in
+a multi-file package).  A <em class="dfn">package specification</em> describes these
+properties.
+</p>
+<p>When supported by a package archive (see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Package-Archives.html#Package-Archives">Package
+Archives</a> in <cite class="cite">The Emacs Lisp Reference Manual</cite>), Emacs can
+automatically download a package&#8217;s specification from said archive.
+If the first argument passed to <code class="code">package-vc-install</code> is a symbol
+naming a package, then Emacs will use the specification provided by
+the archive for that package.
+</p>
+<div class="example">
+<div class="group"><pre class="example-preformatted">;; Emacs will download BBDB's specification from GNU ELPA:
+(package-vc-install 'bbdb)
+</pre></div></div>
+
+<p>The first argument to <code class="code">package-vc-install</code> may also be a
+package specification.  This allows you to install source packages
+from locations other than the known archives listed in the user option
+<code class="code">package-archives</code>.  A package specification is a list of the
+form <code class="code">(<var class="var">name</var> . <var class="var">spec</var>)</code>, in which <var class="var">spec</var> should be a
+property list using any of the keys in the table below.
+</p>
+<p>For definitions of basic terms for working with code repositories and
+version control systems, see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/VCS-Concepts.html#VCS-Concepts">VCS Concepts</a> in <cite class="cite">The GNU Emacs
+Manual</cite>.
+</p>
+<dl class="table">
+<dt><code class="code">:url</code></dt>
+<dd><p>A string providing the URL that specifies the repository from which to
+fetch the package&#8217;s source code.
+</p>
+</dd>
+<dt><code class="code">:branch</code></dt>
+<dd><p>A string providing the revision of the code to install.  Do not
+confuse this with a package&#8217;s version number.
+</p>
+</dd>
+<dt><code class="code">:lisp-dir</code></dt>
+<dd><p>A string providing the repository-relative name of the directory to
+use for loading the Lisp sources, which defaults to the root directory
+of the repository.
+</p>
+</dd>
+<dt><code class="code">:main-file</code></dt>
+<dd><p>A string providing the main file of the project, from which to gather
+package metadata.  If not given, the default is the package name with
+&quot;.el&quot; appended to it.
+</p>
+</dd>
+<dt><code class="code">:doc</code></dt>
+<dd><p>A string providing the repository-relative name of the documentation
+file from which to build an Info file.  This can be a Texinfo file or
+an Org file.
+</p>
+</dd>
+<dt><code class="code">:vc-backend</code></dt>
+<dd><p>A symbol naming the VC backend to use for downloading a copy of the
+package&#8217;s repository (see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Version-Control-Systems.html#Version-Control-Systems">Version Control Systems</a> in <cite class="cite">The GNU
+Emacs Manual</cite>).  If omitted, Emacs will attempt to make a guess based
+on the provided URL, or, failing that, the process will fall back onto
+the value of <code class="code">package-vc-default-backend</code>.
+</p></dd>
+</dl>
+
+<div class="example">
+<div class="group"><pre class="example-preformatted">;; Specifying information manually:
+(package-vc-install
+  '(bbdb :url &quot;https://git.savannah.nongnu.org/git/bbdb.git&quot;
+         :lisp-dir &quot;lisp&quot;
+         :doc &quot;doc/bbdb.texi&quot;))
+</pre></div></div>
+</div>
+</div>
+</div>
+
+
+
+</body>
+</html>

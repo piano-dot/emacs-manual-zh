@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!-- 这是 GNU Emacs 手册,
+为 Emacs  29.2 更新
+
+英文原版版权提示 - Original English version copyright note
+
+Copyright © 1985-2024 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+
+中文翻译版版权提示 - Chinese translation revision copyright notice
+
+版权所有 © 1985-2024 林羿轩(Ralph Lin).
+
+您有在 Free Software Foundation发布的GNU Free Documentation License 第1.3版或之后版本的约束下对其进行再发布及修的权利。 恒定章节为 "The GNU Manifesto," "分发" "(中文版)GNU GENERAL PUBLIC LICENSE" 和
+"GNU GENERAL PUBLIC LICENSE" , 前封面文字为 "A GNU
+Manual,"后封面文字如下(a).  本书的FDL许可证可以在 "GNU Free Documentation
+License."找到.
+
+(a) FSF的后封面文字为: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+ -->
+<title>42 Sorting Text (GNU Emacs Manual)</title>
+
+<meta name="description" content="42 Sorting Text (GNU Emacs Manual)"/>
+<meta name="keywords" content="42 Sorting Text (GNU Emacs Manual)"/>
+<meta name="resource-type" content="document"/>
+<meta name="distribution" content="global"/>
+<meta name="Generator" content="texi2any"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<link href="emacs.xhtml" rel="start" title="Emacs 编辑器"/>
+<link href="Key-Index.xhtml" rel="index" title="Key (Character) Index"/>
+<link href="emacs.xhtml#SEC_Contents" rel="contents" title="Table of Contents"/>
+<link href="emacs.xhtml" rel="up" title="Emacs 编辑器"/>
+<link href="Picture-Mode.xhtml#Picture-Mode" rel="next" title="43 Editing Pictures"/>
+<link href="Printing.xhtml#Printing" rel="prev" title="41 Printing Hard Copies"/>
+<style type="text/css">
+<!--
+div.example {margin-left: 3.2em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+-->
+</style>
+
+
+</head>
+
+<body lang="zh_CN">
+<div class="chapter-level-extent" id="Sorting">
+
+<h2 class="chapter section-level-set-chapter" id="Sorting-Text">42 Sorting Text</h2>
+<a class="index-entry-id" id="index-sorting"></a>
+
+<p>Emacs provides several commands for sorting text in the buffer.  All
+operate on the contents of the region.
+They divide the text of the region into many <em class="dfn">sort records</em>,
+identify a <em class="dfn">sort key</em> for each record, and then reorder the records
+into the order determined by the sort keys.  The records are ordered so
+that their keys are in alphabetical order, or, for numeric sorting, in
+numeric order.  In alphabetic sorting, all upper-case letters &#8216;<samp class="samp">A</samp>&#8217;
+through &#8216;<samp class="samp">Z</samp>&#8217; come before lower-case &#8216;<samp class="samp">a</samp>&#8217;, in accordance with the
+<abbr class="acronym">ASCII</abbr> character sequence (but <code class="code">sort-fold-case</code>,
+described below, can change that).
+</p>
+<p>The various sort commands differ in how they divide the text into sort
+records and in which part of each record is used as the sort key.  Most of
+the commands make each line a separate sort record, but some commands use
+paragraphs or pages as sort records.  Most of the sort commands use each
+entire sort record as its own sort key, but some use only a portion of the
+record as the sort key.
+</p>
+<a class="index-entry-id" id="index-sort_002dlines"></a>
+<a class="index-entry-id" id="index-sort_002dparagraphs"></a>
+<a class="index-entry-id" id="index-sort_002dpages"></a>
+<a class="index-entry-id" id="index-sort_002dfields"></a>
+<a class="index-entry-id" id="index-sort_002dnumeric_002dfields"></a>
+<a class="index-entry-id" id="index-sort_002dnumeric_002dbase"></a>
+<dl class="table">
+<dt><kbd class="kbd">M-x sort-lines</kbd></dt>
+<dd><p>Divide the region into lines, and sort by comparing the entire
+text of a line.  A numeric argument means sort into descending order.
+</p>
+</dd>
+<dt><kbd class="kbd">M-x sort-paragraphs</kbd></dt>
+<dd><p>Divide the region into paragraphs, and sort by comparing the entire
+text of a paragraph (except for leading blank lines).  A numeric
+argument means sort into descending order.
+</p>
+</dd>
+<dt><kbd class="kbd">M-x sort-pages</kbd></dt>
+<dd><p>Divide the region into pages, and sort by comparing the entire
+text of a page (except for leading blank lines).  A numeric
+argument means sort into descending order.
+</p>
+</dd>
+<dt><kbd class="kbd">M-x sort-fields</kbd></dt>
+<dd><p>Divide the region into lines, and sort by comparing the contents of
+one field in each line.  Fields are defined as separated by
+whitespace, so the first run of consecutive non-whitespace characters
+in a line constitutes field 1, the second such run constitutes field
+2, etc.
+</p>
+<p>Specify which field to sort by with a numeric argument: 1 to sort by
+field 1, etc.; the default is 1.  A negative argument means count
+fields from the right instead of from the left; thus, minus 1 means
+sort by the last field.  If several lines have identical contents in
+the field being sorted, they keep the same relative order that they
+had in the original buffer.
+</p>
+</dd>
+<dt><kbd class="kbd">M-x sort-numeric-fields</kbd></dt>
+<dd><p>Like <kbd class="kbd">M-x sort-fields</kbd> except the specified field is converted
+to an integer for each line, and the numbers are compared.  &#8216;<samp class="samp">10</samp>&#8217;
+comes before &#8216;<samp class="samp">2</samp>&#8217; when considered as text, but after it when
+considered as a number.  By default, numbers are interpreted according
+to <code class="code">sort-numeric-base</code>, but numbers beginning with &#8216;<samp class="samp">0x</samp>&#8217; or
+&#8216;<samp class="samp">0</samp>&#8217; are interpreted as hexadecimal and octal, respectively.
+</p>
+</dd>
+<dt><kbd class="kbd">M-x sort-columns</kbd></dt>
+<dd><p>Like <kbd class="kbd">M-x sort-fields</kbd> except that the text within each line
+used for comparison comes from a fixed range of columns.  With a
+prefix argument, sort in reverse order.  See below for more details
+on this command.
+</p>
+</dd>
+<dt><a id="index-reverse_002dregion"></a><kbd class="kbd">M-x reverse-region</kbd></dt>
+<dd><p>Reverse the order of the lines in the region.  This is useful for
+sorting into descending order by fields, since those sort
+commands do not have a feature for doing that.
+</p></dd>
+</dl>
+
+<p>For example, if the buffer contains this:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">On systems where clash detection (locking of files being edited) is
+implemented, Emacs also checks the first time you modify a buffer
+whether the file has changed on disk since it was last visited or
+saved.  If it has, you are asked to confirm that you want to change
+the buffer.
+</pre></div>
+
+<p>applying <kbd class="kbd">M-x sort-lines</kbd> to the entire buffer produces this:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">On systems where clash detection (locking of files being edited) is
+implemented, Emacs also checks the first time you modify a buffer
+saved.  If it has, you are asked to confirm that you want to change
+the buffer.
+whether the file has changed on disk since it was last visited or
+</pre></div>
+
+<p>where the upper-case &#8216;<samp class="samp">O</samp>&#8217; sorts before all lower-case letters.  If
+you use <kbd class="kbd">C-u 2 M-x sort-fields</kbd> instead, you get this:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">implemented, Emacs also checks the first time you modify a buffer
+saved.  If it has, you are asked to confirm that you want to change
+the buffer.
+On systems where clash detection (locking of files being edited) is
+whether the file has changed on disk since it was last visited or
+</pre></div>
+
+<p>where the sort keys were &#8216;<samp class="samp">Emacs</samp>&#8217;, &#8216;<samp class="samp">If</samp>&#8217;, &#8216;<samp class="samp">buffer</samp>&#8217;,
+&#8216;<samp class="samp">systems</samp>&#8217; and &#8216;<samp class="samp">the</samp>&#8217;.
+</p>
+<a class="index-entry-id" id="index-sort_002dcolumns"></a>
+<p><kbd class="kbd">M-x sort-columns</kbd> requires more explanation.  You specify the
+columns by putting point at one of the columns and the mark at the other
+column.  Because this means you cannot put point or the mark at the
+beginning of the first line of the text you want to sort, this command
+uses an unusual definition of &#8220;region&#8221;: all of the line point is in is
+considered part of the region, and so is all of the line the mark is in,
+as well as all the lines in between.
+</p>
+<p>For example, to sort a table by information found in columns 10 to 15,
+you could put the mark on column 10 in the first line of the table, and
+point on column 15 in the last line of the table, and then run
+<code class="code">sort-columns</code>.  Equivalently, you could run it with the mark on
+column 15 in the first line and point on column 10 in the last line.
+</p>
+<p>This can be thought of as sorting the rectangle specified by point and
+the mark, except that the text on each line to the left or right of the
+rectangle moves along with the text inside the rectangle.
+See <a class="xref" href="Killing.xhtml#Rectangles">Rectangles</a>.
+</p>
+<a class="index-entry-id" id="index-sort_002dfold_002dcase"></a>
+<p>Many of the sort commands ignore case differences when comparing, if
+<code class="code">sort-fold-case</code> is non-<code class="code">nil</code>.
+</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+% $Id: txi-zh.tex 5191 2013-02-23 00:11:18Z karl $
+% txi-zh_CN.tex -- Chinese Simplified translations for texinfo.tex.  This is read
+% when a source document says @documentlanguage zh_cn (which might happen
+% after another @documentlanguage).  The actual values are the same as
+% the defaults.
+% 
+% Copyright 1999, 2007, 2008 Free Software Foundation.
+%
+% This   is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\txisetlanguage{Chinese}{2}{3}
+
+\plainnonfrenchspacing
+
+\gdef\putwordAppendix{附录}
+\gdef\putwordChapter{章}
+\gdef\putworderror{错误}
+\gdef\putwordfile{文件}
+\gdef\putwordin{在}
+\gdef\putwordIndexIsEmpty{(空索引)}
+\gdef\putwordIndexNonexistent{(索引不存在)}
+\gdef\putwordInfo{信息}
+\gdef\putwordInstanceVariableof{Instance Variable of}
+\gdef\putwordMethodon{Method on}
+\gdef\putwordNoTitle{无标题}
+\gdef\putwordof{of}
+\gdef\putwordon{on}
+\gdef\putwordpage{页}
+\gdef\putwordsection{section}
+\gdef\putwordSection{节}
+\gdef\putwordsee{查看}
+\gdef\putwordSee{看}
+\gdef\putwordShortTOC{简短目录}
+\gdef\putwordTOC{目录}
+%
+\gdef\putwordMJan{一月}
+\gdef\putwordMFeb{二月}
+\gdef\putwordMMar{三月}
+\gdef\putwordMApr{四月}
+\gdef\putwordMMay{五月}
+\gdef\putwordMJun{六月}
+\gdef\putwordMJul{七月}
+\gdef\putwordMAug{八月}
+\gdef\putwordMSep{九月}
+\gdef\putwordMOct{十月}
+\gdef\putwordMNov{十一月}
+\gdef\putwordMDec{十二月}
+%
+\gdef\putwordDefmac{宏}
+\gdef\putwordDefspec{特殊形式}
+\gdef\putwordDefvar{变量}
+\gdef\putwordDefopt{用户选项}
+\gdef\putwordDeffunc{功能}
+
+% Produces Day Month Year style of output.
+%\def\today{%
+%  \number\day\space
+%  \ifcase\month
+%  \or\putwordMJan\or\putwordMFeb\or\putwordMMar\or\putwordMApr
+%  \or\putwordMMay\or\putwordMJun\or\putwordMJul\or\putwordMAug
+%  \or\putwordMSep\or\putwordMOct\or\putwordMNov\or\putwordMDec
+%  \fi
+%  \space\number\year}
+

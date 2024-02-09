@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!-- 这是 GNU Emacs 手册,
+为 Emacs  29.2 更新
+
+英文原版版权提示 - Original English version copyright note
+
+Copyright © 1985-2024 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+
+中文翻译版版权提示 - Chinese translation revision copyright notice
+
+版权所有 © 1985-2024 林羿轩(Ralph Lin).
+
+您有在 Free Software Foundation发布的GNU Free Documentation License 第1.3版或之后版本的约束下对其进行再发布及修的权利。 恒定章节为 "The GNU Manifesto," "分发" "(中文版)GNU GENERAL PUBLIC LICENSE" 和
+"GNU GENERAL PUBLIC LICENSE" , 前封面文字为 "A GNU
+Manual,"后封面文字如下(a).  本书的FDL许可证可以在 "GNU Free Documentation
+License."找到.
+
+(a) FSF的后封面文字为: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom."
+ -->
+<title>47 Hyperlinking and Web Navigation Features (GNU Emacs Manual)</title>
+
+<meta name="description" content="47 Hyperlinking and Web Navigation Features (GNU Emacs Manual)"/>
+<meta name="keywords" content="47 Hyperlinking and Web Navigation Features (GNU Emacs Manual)"/>
+<meta name="resource-type" content="document"/>
+<meta name="distribution" content="global"/>
+<meta name="Generator" content="texi2any"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<link href="emacs.xhtml" rel="start" title="Emacs 编辑器"/>
+<link href="Key-Index.xhtml" rel="index" title="Key (Character) Index"/>
+<link href="emacs.xhtml#SEC_Contents" rel="contents" title="Table of Contents"/>
+<link href="emacs.xhtml" rel="up" title="Emacs 编辑器"/>
+<link href="Amusements.xhtml" rel="next" title="48 Games and Other Amusements"/>
+<link href="Recursive-Edit.xhtml" rel="prev" title="46 Recursive Editing Levels"/>
+<style type="text/css">
+<!--
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+-->
+</style>
+
+
+</head>
+
+<body lang="zh_CN">
+<div class="chapter-level-extent" id="Hyperlinking">
+
+<h2 class="chapter section-level-set-chapter" id="Hyperlinking-and-Web-Navigation-Features">47 Hyperlinking and Web Navigation Features</h2>
+
+<p>The following subsections describe convenience features for handling
+URLs and other types of links occurring in Emacs buffer text.
+</p>
+
+<div class="section-level-extent" id="EWW">
+<h3 class="section subsection-level-set-section" id="Web-Browsing-with-EWW">47.1 Web Browsing with EWW</h3>
+
+<a class="index-entry-id" id="index-eww"></a>
+<a class="index-entry-id" id="index-eww_002dopen_002dfile"></a>
+<p><em class="dfn">EWW</em>, the Emacs Web Wowser, is a web browser package for Emacs.
+It allows browsing URLs within an Emacs buffer.  The command <kbd class="kbd">M-x
+eww</kbd> will open a URL or search the web.  You can open a file
+using the command <kbd class="kbd">M-x eww-open-file</kbd>.  You can use EWW as the
+web browser for <code class="code">browse-url</code>, see <a class="pxref" href="#Browse_002dURL">Following URLs</a>.  For full
+details, see <a href="https://www.gnu.org/software/emacs/manual/html_node/eww/index.html#Top">EWW</a> in <cite class="cite">The Emacs Web Wowser Manual</cite>.
+</p>
+</div>
+<div class="section-level-extent" id="Embedded-WebKit-Widgets">
+<h3 class="section subsection-level-set-section" id="Embedded-WebKit-Widgets-1">47.2 Embedded WebKit Widgets</h3>
+<a class="index-entry-id" id="index-xwidget"></a>
+<a class="index-entry-id" id="index-webkit-widgets"></a>
+<a class="index-entry-id" id="index-embedded-widgets"></a>
+
+<a class="index-entry-id" id="index-xwidget_002dwebkit_002dbrowse_002durl"></a>
+<a class="index-entry-id" id="index-xwidget_002dwebkit_002dmode"></a>
+<a class="index-entry-id" id="index-Xwidget_002dWebKit-mode"></a>
+<p>If Emacs was compiled with the appropriate support packages, it is
+able to show browser widgets in its buffers.  The command <kbd class="kbd">M-x
+xwidget-webkit-browse-url</kbd> asks for a URL to display in the browser
+widget.  The URL normally defaults to the URL at or before point, but
+if there is an active region (see <a class="pxref" href="Mark.xhtml#Mark">The Mark and the Region</a>), the default URL comes
+from the region instead, after removing any whitespace from it.  The
+command then creates a new buffer with the embedded browser showing
+the specified URL.  The buffer is put in the Xwidget-WebKit mode
+(similar to Image mode, see <a class="pxref" href="Files.xhtml#Image-Mode">Viewing Image Files</a>), which provides
+one-key commands for scrolling the widget, changing its size, and
+reloading it.  Type <kbd class="kbd">C-h&#160;b</kbd><!-- /@w --> in that buffer to see the key
+bindings.
+</p>
+<a class="index-entry-id" id="index-xwidget_002dwebkit_002dedit_002dmode-1"></a>
+<a class="index-entry-id" id="index-xwidget_002dwebkit_002dedit_002dmode"></a>
+<p>By default, typing a self-inserting character inside an xwidget
+webkit buffer will do nothing, or trigger some special action.  To
+make those characters and other common editing keys insert themselves
+when pressed, you can enable <code class="code">xwidget-webkit-edit-mode</code>, which
+redefines them to be passed through to the WebKit xwidget.
+</p>
+<p>You can also enable <code class="code">xwidget-webkit-edit-mode</code> by typing <kbd class="kbd">e</kbd>
+inside the xwidget webkit buffer.
+</p>
+<a class="index-entry-id" id="index-xwidget_002dwebkit_002disearch_002dmode"></a>
+<a class="index-entry-id" id="index-searching-in-webkit-buffers"></a>
+<p><code class="code">xwidget-webkit-isearch-mode</code> is a minor mode that behaves
+similarly to incremental search (see <a class="pxref" href="Search.xhtml#Incremental-Search">Incremental Search</a>), but
+operates on the contents of a WebKit widget instead of the current
+buffer.  It is bound to <kbd class="kbd">C-s</kbd> and <kbd class="kbd">C-r</kbd> inside xwidget-webkit
+buffers.  When it is invoked by <kbd class="kbd">C-r</kbd>, the initial search will be
+performed in reverse direction.
+</p>
+<p>Typing any self-inserting character will cause the character to be
+inserted into the current search query.  Typing <kbd class="kbd">C-s</kbd> will cause
+the WebKit widget to display the next search result, while typing
+<kbd class="kbd">C-r</kbd> will cause it to display the previous one.
+</p>
+<p>To leave incremental search, you can type <kbd class="kbd">C-g</kbd>.
+</p>
+<a class="index-entry-id" id="index-xwidget_002dwebkit_002dbrowse_002dhistory"></a>
+<a class="index-entry-id" id="index-history-of-webkit-buffers"></a>
+<p>The command <code class="code">xwidget-webkit-browse-history</code> displays a buffer
+containing a list of pages previously loaded by the current WebKit
+buffer, and lets you navigate to those pages by hitting <kbd class="kbd">RET</kbd>.
+</p>
+<p>It is bound to <kbd class="kbd">H</kbd>.
+</p>
+</div>
+<div class="section-level-extent" id="Browse_002dURL">
+<h3 class="section subsection-level-set-section" id="Following-URLs">47.3 Following URLs</h3>
+<a class="index-entry-id" id="index-World-Wide-Web"></a>
+<a class="index-entry-id" id="index-Web"></a>
+<a class="index-entry-id" id="index-browse_002durl"></a>
+<a class="index-entry-id" id="index-browse_002durl_002dat_002dpoint"></a>
+<a class="index-entry-id" id="index-browse_002durl_002dat_002dmouse"></a>
+<a class="index-entry-id" id="index-Browse_002dURL"></a>
+<a class="index-entry-id" id="index-URLs"></a>
+
+<dl class="table">
+<dt><kbd class="kbd">M-x browse-url <kbd class="key">RET</kbd> <var class="var">url</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p>Load a URL into a Web browser.
+</p></dd>
+</dl>
+
+<p>The Browse-URL package allows you to easily follow URLs from within
+Emacs.  Most URLs are followed by invoking a web browser;
+&#8216;<samp class="samp">mailto:</samp>&#8217; URLs are followed by invoking the <code class="code">compose-mail</code>
+Emacs command to send mail to the specified address (see <a class="pxref" href="Sending-Mail.xhtml#Sending-Mail">Sending Mail</a>).
+</p>
+<p>The command <kbd class="kbd">M-x browse-url</kbd> prompts for a URL, and follows it.
+If point is located near a plausible URL, that URL is offered as the
+default.  The Browse-URL package also provides other commands which
+you might like to bind to keys, such as <code class="code">browse-url-at-point</code> and
+<code class="code">browse-url-at-mouse</code>.
+</p>
+<a class="index-entry-id" id="index-browse_002durl_002dmailto_002dfunction"></a>
+<a class="index-entry-id" id="index-browse_002durl_002dbrowser_002dfunction"></a>
+<p>You can customize Browse-URL&#8217;s behavior via various options in the
+<code class="code">browse-url</code> Customize group.  In particular, the option
+<code class="code">browse-url-mailto-function</code> lets you define how to follow
+&#8216;<samp class="samp">mailto:</samp>&#8217; URLs, while <code class="code">browse-url-browser-function</code>
+specifies your default browser.
+</p>
+<a class="index-entry-id" id="index-browse_002durl_002dhandlers"></a>
+<p>You can define that certain URLs are browsed with other functions by
+customizing <code class="code">browse-url-handlers</code>, an alist of regular
+expressions or predicates paired with functions to browse matching
+URLs.
+</p>
+<p>For more information, view the package commentary by typing <kbd class="kbd">C-h P
+browse-url <kbd class="key">RET</kbd></kbd>.
+</p>
+<a class="index-entry-id" id="index-url_002dhandler_002dmode"></a>
+<p>Emacs also has a minor mode that has some support for handling
+<abbr class="acronym">URL</abbr>s as if they were files.  <code class="code">url-handler-mode</code> is a
+global minor mode that affects most of the Emacs commands and
+primitives that deal with file names.  After switching on this mode,
+you can say, for instance, <kbd class="kbd">C-x C-f https://www.gnu.org/ RET</kbd> to
+see the <abbr class="acronym">HTML</abbr> for that web page, and you can then edit it and
+save it to a local file, for instance.
+</p>
+</div>
+<div class="section-level-extent" id="Goto-Address-mode">
+<h3 class="section subsection-level-set-section" id="Activating-URLs">47.4 Activating URLs</h3>
+<a class="index-entry-id" id="index-goto_002daddress_002dmode"></a>
+<a class="index-entry-id" id="index-mode_002c-Goto-Address"></a>
+<a class="index-entry-id" id="index-Goto-Address-mode"></a>
+<a class="index-entry-id" id="index-URLs_002c-activating"></a>
+
+<dl class="table">
+<dt><kbd class="kbd">M-x goto-address-mode</kbd></dt>
+<dd><p>Activate URLs and e-mail addresses in the current buffer.
+</p>
+</dd>
+<dt><kbd class="kbd">M-x global-goto-address-mode</kbd></dt>
+<dd><p>Activate <code class="code">goto-address-mode</code> in all buffers.
+</p></dd>
+</dl>
+
+<a class="index-entry-id" id="index-C_002dc-RET-_0028Goto-Address-mode_0029"></a>
+<a class="index-entry-id" id="index-goto_002daddress_002dat_002dpoint"></a>
+<p>You can make Emacs mark out URLs specially in the current buffer, by
+typing <kbd class="kbd">M-x goto-address-mode</kbd>.  When this buffer-local minor mode
+is enabled, it finds all the URLs in the buffer, highlights them, and
+turns them into clickable buttons.  You can follow the URL by typing
+<kbd class="kbd">C-c <kbd class="key">RET</kbd></kbd> (<code class="code">goto-address-at-point</code>) while point is on
+its text; or by clicking with <kbd class="kbd">mouse-2</kbd>, or by clicking
+<kbd class="kbd">mouse-1</kbd> quickly (see <a class="pxref" href="Frames.xhtml#Mouse-References">Following References with the Mouse</a>).  Following a URL is
+done by calling <code class="code">browse-url</code> as a subroutine
+(see <a class="pxref" href="#Browse_002dURL">Following URLs</a>).
+</p>
+<p>It can be useful to add <code class="code">goto-address-mode</code> to mode hooks and
+hooks for displaying an incoming message
+(e.g., <code class="code">rmail-show-message-hook</code> for Rmail).  This is not needed
+for Gnus or MH-E, which have similar features of their own.
+</p>
+</div>
+<div class="section-level-extent" id="FFAP">
+<h3 class="section subsection-level-set-section" id="Finding-Files-and-URLs-at-Point">47.5 Finding Files and URLs at Point</h3>
+<a class="index-entry-id" id="index-find_002dfile_002dat_002dpoint"></a>
+<a class="index-entry-id" id="index-ffap"></a>
+<a class="index-entry-id" id="index-dired_002dat_002dpoint"></a>
+<a class="index-entry-id" id="index-ffap_002dnext"></a>
+<a class="index-entry-id" id="index-ffap_002dmenu"></a>
+<a class="index-entry-id" id="index-finding-file-at-point"></a>
+
+<p>The FFAP package replaces certain key bindings for finding files,
+such as <kbd class="kbd">C-x C-f</kbd>, with commands that provide more sensible
+defaults.  These commands behave like the ordinary ones when given a
+prefix argument.  Otherwise, they get the default file name or URL
+from the text around point.  If what is found in the buffer has the
+form of a URL rather than a file name, the commands use
+<code class="code">browse-url</code> to view it (see <a class="pxref" href="#Browse_002dURL">Following URLs</a>).
+</p>
+<p>This feature is useful for following references in mail or news
+buffers, <samp class="file">README</samp> files, <samp class="file">MANIFEST</samp> files, and so on.  For
+more information, view the package commentary by typing <kbd class="kbd">C-h P
+ffap <kbd class="key">RET</kbd></kbd>.
+</p>
+<a class="index-entry-id" id="index-FFAP-minor-mode"></a>
+<a class="index-entry-id" id="index-ffap_002dmode"></a>
+<p>To enable FFAP, type <kbd class="kbd">M-x ffap-bindings</kbd>.  This makes the
+following key bindings, and also installs hooks for additional FFAP
+functionality in Rmail, Gnus and VM article buffers.
+</p>
+<dl class="table">
+<dt><a id="index-C_002dx-C_002df-_0028FFAP_0029"></a><kbd class="kbd">C-x C-f <var class="var">filename</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p>Find <var class="var">filename</var>, guessing a default from text around point
+(<code class="code">find-file-at-point</code>).
+</p></dd>
+<dt><a id="index-C_002dx-C_002dr-_0028FFAP_0029"></a><kbd class="kbd">C-x C-r <var class="var">filename</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-read-only</code>, analogous to <code class="code">find-file-read-only</code>.
+</p></dd>
+<dt><a id="index-C_002dx-C_002dv-_0028FFAP_0029"></a><kbd class="kbd">C-x C-v <var class="var">filename</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-alternate-file</code>, analogous to <code class="code">find-alternate-file</code>.
+</p></dd>
+<dt><a id="index-C_002dx-d-_0028FFAP_0029"></a><kbd class="kbd">C-x d <var class="var">directory</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p>Start Dired on <var class="var">directory</var>, defaulting to the directory at
+point (<code class="code">dired-at-point</code>).
+</p></dd>
+<dt><kbd class="kbd">C-x C-d <var class="var">directory</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-list-directory</code>, analogous to <code class="code">list-directory</code>.
+</p></dd>
+<dt><a id="index-C_002dx-4-f-_0028FFAP_0029"></a><kbd class="kbd">C-x 4 f <var class="var">filename</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-other-window</code>, analogous to <code class="code">find-file-other-window</code>.
+</p></dd>
+<dt><kbd class="kbd">C-x 4 r <var class="var">filename</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-read-only-other-window</code>, analogous to
+<code class="code">find-file-read-only-other-window</code>.
+</p></dd>
+<dt><kbd class="kbd">C-x 4 d <var class="var">directory</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-dired-other-window</code>, like <code class="code">dired-other-window</code>.
+</p></dd>
+<dt><a id="index-C_002dx-5-f-_0028FFAP_0029"></a><kbd class="kbd">C-x 5 f <var class="var">filename</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-other-frame</code>, analogous to <code class="code">find-file-other-frame</code>.
+</p></dd>
+<dt><kbd class="kbd">C-x 5 r <var class="var">filename</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-read-only-other-frame</code>, analogous to
+<code class="code">find-file-read-only-other-frame</code>.
+</p></dd>
+<dt><kbd class="kbd">C-x 5 d <var class="var">directory</var> <kbd class="key">RET</kbd></kbd></dt>
+<dd><p><code class="code">ffap-dired-other-frame</code>, analogous to <code class="code">dired-other-frame</code>.
+<a class="index-entry-id" id="index-C_002dx-t-C_002df-_0028FFAP_0029"></a>
+</p></dd>
+<dt><kbd class="kbd">C-x t C-f <var class="var">filename</var> <kbd class="key">return</kbd></kbd></dt>
+<dd><p><code class="code">ffap-other-tab</code>, analogous to <code class="code">find-file-other-tab</code>.
+</p></dd>
+<dt><kbd class="kbd">C-x t C-r <var class="var">filename</var> <kbd class="key">return</kbd></kbd></dt>
+<dd><p><code class="code">ffap-read-only-other-tab</code>, analogous to <code class="code">find-file-read-only-other-tab</code>.
+</p></dd>
+<dt><kbd class="kbd">M-x ffap-next</kbd></dt>
+<dd><p>Search buffer for next file name or URL, then find that file or URL.
+</p></dd>
+<dt><a id="index-S_002dmouse_002d3-_0028FFAP_0029"></a><kbd class="kbd">S-mouse-3</kbd></dt>
+<dd><p><code class="code">ffap-at-mouse</code> finds the file guessed from text around the position
+of a mouse click.
+</p></dd>
+<dt><a id="index-C_002dS_002dmouse_002d3-_0028FFAP_0029"></a><kbd class="kbd">C-S-mouse-3</kbd></dt>
+<dd><p>Display a menu of files and URLs mentioned in current buffer, then
+find the one you select (<code class="code">ffap-menu</code>).
+</p></dd>
+</dl>
+
+</div>
+</div>
+
+
+
+</body>
+</html>
