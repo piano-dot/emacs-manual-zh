@@ -6,11 +6,12 @@
 暂时没有完全翻译完，但是欢迎对任意部分提交修改PR
 
 #### 计划路线图
-计划先翻译完全文，再完成TEX版本制作（有可能会搬迁至tex），视情况修改texinfo的xref制作HTML版
+计划先翻译完全文，再完成TEX版本制作（有可能会migrate至tex），视情况修改texinfo的xref制作HTML版.
 
 #### 参与贡献
 
 1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交更改
-4.  提交Pull Request
+2.  提交更改
+3.  提交Pull Request至develop 分支(提交后会尽快汇入master)
+#### 许可
+本文档以FDL1.3许可。请查看LICENSE文件。
