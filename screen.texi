@@ -49,7 +49,7 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 
   所选窗口中的光标显示大多数编辑命令生效的位置，称为 @dfn{光标}@footnote{''光标'' 来自字符 @samp{.}，这是 TECO（Emacs的编写语言）中用于访问编辑位置的命令。 许多 Emacs 命令将光标移动到缓冲区中的不同位置;例如，您可以通过单击鼠标按钮 1（通哦常是左键）将点放置在所需位置。
 
-  By default, the cursor in the selected window is drawn as a solid block and appears to be @emph{on} a character, but you should think of point as @emph{between} two characters; it is situated @emph{before} the character under the cursor.  For example, if your text looks like @samp{frob} with the cursor over the @samp{b}, then point is between the @samp{o} and the @samp{b}.  If you insert the character @samp{!} at that position, the result is @samp{fro!b}, with point between the @samp{!}  and the @samp{b}.  Thus, the cursor remains over the @samp{b}, as before.
+  默认情况下，所选窗格中的光标绘制成一个实心块，并显示为 @emph{on} 字符，但您应该将光标视为在两个字符@emph{之间} ;它位于光标下方的字符@emph{之前}。 例如，如果你的文字看起来像@samp{frob}，而光标位于 @samp{b} 上，言光标则指向 @samp@samp{o} 和 @samp{b} 之间。 如果在该位置插入字符 @samp{！}，则结果为 @samp{fro！b}，光标 @samp{！} 之间 和 @samp{b}。 因此，光标保持在 @samp{b} 上，如前所述。
 
   If you are editing several files in Emacs, each in its own buffer,
 each buffer has its own value of point.  A buffer that is not
