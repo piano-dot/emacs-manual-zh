@@ -51,14 +51,9 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 
   默认情况下，所选窗格中的光标绘制成一个实心块，并显示为 @emph{on} 字符，但您应该将光标视为在两个字符@emph{之间} ;它位于光标下方的字符@emph{之前}。 例如，如果你的文字看起来像@samp{frob}，而光标位于 @samp{b} 上，言光标则指向 @samp@samp{o} 和 @samp{b} 之间。 如果在该位置插入字符 @samp{！}，则结果为 @samp{fro！b}，光标 @samp{！} 之间 和 @samp{b}。 因此，光标保持在 @samp{b} 上，如前所述。
 
-  If you are editing several files in Emacs, each in its own buffer,
-each buffer has its own value of point.  A buffer that is not
-currently displayed remembers its value of point if you later display
-it again.  Furthermore, if a buffer is displayed in multiple windows,
-each of those windows has its own value of point.
+  如果你在 Emacs 中编辑多个文件，每个文件都有自己的缓冲区，则每个缓冲区都有自己的光标值。 如果以后再次显示当前未显示的缓冲区，则该缓冲区会记住其 光标值。此外，如果缓冲区显示在多个窗口中，则每个窗口都有自己的光标值。
 
-  @xref{Cursor Display}, for options that control how Emacs displays
-the cursor.
+  @xref{Cursor Display}来查看控制Emacs如何显示光标的选项。
 
 @node Echo Area
 @section The Echo Area
