@@ -12,6 +12,8 @@
 
 1.  Fork 本仓库
 2.  提交更改
-3.  提交Pull Request至develop 分支(提交后会尽快汇入master)
+3.  提交Pull Request
 #### 许可
-本文档以FDL1.3许可。请查看LICENSE文件。
+本文档以FDL1.3许可，给予你在该许可证条件下复制，分发，修改的权限。
+
+请查看LICENSE文件。
