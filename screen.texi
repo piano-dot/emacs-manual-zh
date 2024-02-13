@@ -56,13 +56,13 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
   @xref{Cursor Display}来查看控制Emacs如何显示光标的选项。
 
 @node Echo Area
-@section The Echo Area
-@cindex echo area
+@section 回显区
+@cindex echo area 回显区
 
-  The line at the very bottom of the frame is the @dfn{echo area}.  It
-is used to display small amounts of text for various purposes.
+在窗口最底部的一条线叫做@dfn{回显区}，显示用于各种目的的少量文本。
+ 
 
-@cindex echoing
+@cindex echoing 回显
   The echo area is so-named because one of the things it is used for
 is @dfn{echoing}, which means displaying the characters of a
 multi-character command as you type.  Single-character commands are
@@ -73,7 +73,7 @@ rest.  Once echoing has started, the rest of the command echoes
 immediately as you type it.  This behavior is designed to give
 confident users fast response, while giving hesitant users maximum
 feedback.
-
+  回显区之所以这么叫，是因为他的用途之一就是@dfn{回显}，意思是显示键入的多字符命令。单字符命令不会被回显。多字符（@pxref{Keys}）命令会在
 @cindex error message
 @cindex echo area message
   The echo area is also used to display an @dfn{error message} when a
