@@ -63,17 +63,7 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
  
 
 @cindex echoing 回显
-  The echo area is so-named because one of the things it is used for
-is @dfn{echoing}, which means displaying the characters of a
-multi-character command as you type.  Single-character commands are
-not echoed.  Multi-character commands (@pxref{Keys}) are echoed if you
-pause for more than a second in the middle of a command.  Emacs then
-echoes all the characters of the command so far, to prompt you for the
-rest.  Once echoing has started, the rest of the command echoes
-immediately as you type it.  This behavior is designed to give
-confident users fast response, while giving hesitant users maximum
-feedback.
-  回显区之所以这么叫，是因为他的用途之一就是@dfn{回显}，意思是显示键入的多字符命令。单字符命令不会被回显。多字符（@pxref{Keys}）命令会在
+  回显区之所以这么叫，是因为他的用途之一就是@dfn{回显}，意思是显示键入的多字符命令。单字符命令不会被回显。多键（@pxref{Keys}）命令会在你输入命令一半停超过一秒时回显。然后Emacs 回显现在已经按下的所有键，以提示你完成其余操作。这个行为旨在为自信的用户提供快速回应，同时为犹豫不决的用户提供最大反馈。
 @cindex error message
 @cindex echo area message
   The echo area is also used to display an @dfn{error message} when a
