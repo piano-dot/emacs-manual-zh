@@ -75,27 +75,12 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 @cindex saved echo area messages
 @cindex messages saved from echo area
 @vindex message-log-max
-  Informative echo area messages are saved in a special buffer named
-@file{*Messages*}.  (We have not explained buffers yet; see
-@ref{Buffers}, for more information about them.)  If you miss a
-message that appeared briefly on the screen, you can switch to the
-@file{*Messages*} buffer to see it again.  The @file{*Messages*}
-buffer is limited to a certain number of lines, specified by the
-variable @code{message-log-max}.  (We have not explained variables
-either; see @ref{Variables}, for more information about them.)  Beyond
-this limit, one line is deleted from the beginning whenever a new
-message line is added at the end.
+  Informative echo area messages are saved in a special buffer named @file{*Messages*}.  (We have not explained buffers yet; see @ref{Buffers}, for more information about them.)  If you miss a message that appeared briefly on the screen, you can switch to the @file{*Messages*} buffer to see it again.  The @file{*Messages*} buffer is limited to a certain number of lines, specified by the variable @code{message-log-max}.  (We have not explained variables either; see @ref{Variables}, for more information about them.)  Beyond this limit, one line is deleted from the beginning whenever a new message line is added at the end.
+回显区回显有用信息的消息保存在名为 @file{*Messages*} 的特殊缓冲区中。 （我们还没有解释缓冲区;有关它们的更多信息，请参阅 @ref{Buffers}。 如果您错过了屏幕上短暂出现的消息，您可以切换到 @file{*Messages*} 缓冲区以再次查看它。 变量 @code{message-log-max} 限定@file{*Messages*} 缓冲区限制只能多少行。 （我们也没有解释变量;有关它们的更多信息，请参阅 @ref{Variables}。 超过此限制，每当在末尾添加新消息行时，都会从开头删除一行。
 
-  @xref{Display Custom}, for options that control how Emacs uses the
-echo area.
+@xref{Display Custom}，看 Emacs 如何控制来使用回显区域的选项。
 
-  The echo area is also used to display the @dfn{minibuffer}, a
-special window where you can input arguments to commands, such as the
-name of a file to be edited.  When the minibuffer is in use, the text
-displayed in the echo area begins with a @dfn{prompt string}, and the
-active cursor appears within the minibuffer, which is temporarily
-considered the selected window.  You can always get out of the
-minibuffer by typing @kbd{C-g}.  @xref{Minibuffer}.
+  The echo area is also used to display the @dfn{minibuffer}, a special window where you can input arguments to commands, such as the name of a file to be edited.  When the minibuffer is in use, the text displayed in the echo area begins with a @dfn{prompt string}, and the active cursor appears within the minibuffer, which is temporarily considered the selected window.  You can always get out of the minibuffer by typing @kbd{C-g}.  @xref{Minibuffer}.
 
 @node Mode Line
 @section The Mode Line
