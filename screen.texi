@@ -75,70 +75,37 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 @cindex saved echo area messages
 @cindex messages saved from echo area
 @vindex message-log-max
-  Informative echo area messages are saved in a special buffer named @file{*Messages*}.  (We have not explained buffers yet; see @ref{Buffers}, for more information about them.)  If you miss a message that appeared briefly on the screen, you can switch to the @file{*Messages*} buffer to see it again.  The @file{*Messages*} buffer is limited to a certain number of lines, specified by the variable @code{message-log-max}.  (We have not explained variables either; see @ref{Variables}, for more information about them.)  Beyond this limit, one line is deleted from the beginning whenever a new message line is added at the end.
-回显区回显有用信息的消息保存在名为 @file{*Messages*} 的特殊缓冲区中。 （我们还没有解释缓冲区;有关它们的更多信息，请参阅 @ref{Buffers}。 如果您错过了屏幕上短暂出现的消息，您可以切换到 @file{*Messages*} 缓冲区以再次查看它。 变量 @code{message-log-max} 限定@file{*Messages*} 缓冲区限制只能多少行。 （我们也没有解释变量;有关它们的更多信息，请参阅 @ref{Variables}。 超过此限制，每当在末尾添加新消息行时，都会从开头删除一行。
+  回显区回显有用信息的消息保存在名为 @file{*Messages*} 的特殊缓冲区中。 （我们还没有解释缓冲区;有关它们的更多信息，请参阅 @ref{Buffers}。 如果您错过了屏幕上短暂出现的消息，您可以切换到 @file{*Messages*} 缓冲区以再次查看它。 变量 @code{message-log-max} 限定@file{*Messages*} 缓冲区限制只能多少行。 （我们也没有解释变量;有关它们的更多信息，请参阅 @ref{Variables}。 超过此限制，每当在末尾添加新消息行时，都会从开头删除一行。
 
 @xref{Display Custom}，看 Emacs 如何控制来使用回显区域的选项。
 
-  The echo area is also used to display the @dfn{minibuffer}, a special window where you can input arguments to commands, such as the name of a file to be edited.  When the minibuffer is in use, the text displayed in the echo area begins with a @dfn{prompt string}, and the active cursor appears within the minibuffer, which is temporarily considered the selected window.  You can always get out of the minibuffer by typing @kbd{C-g}.  @xref{Minibuffer}.
+  回显区域还用于显示 @dfn{小缓冲区}，这是一个特殊的窗格，您可以在其中输入命令的参数，例如要编辑的文件的名称。 使用小缓冲区时，回显区域中显示的文本以 @dfn{prompt string} 开头，活动光标出现在微型缓冲区中，暂时将其视为选定的窗口。 您始终可以通过键入 @kbd{C-g} 来退出 minibuffer。 @xref{Minibuffer}。
 
 @node Mode Line
 @section The Mode Line
 @cindex mode line
 @cindex top level
 
-  At the bottom of each window is a @dfn{mode line}, which describes
-what is going on in the current buffer.  When there is only one
-window, the mode line appears right above the echo area; it is the
-next-to-last line in the frame.  On a graphical display, the mode line
-is drawn with a 3D box appearance.  Emacs also usually draws the mode
-line of the selected window with a different color from that of
-unselected windows, in order to make it stand out.
+每个窗口的底部都有一个 @dfn{状态栏}，用于描述当前缓冲区中正在发生的事情。 当只有一个窗口时，模式线出现在回显区的正上方;它是窗口中的倒数第二行。 在图形界面上，状态栏以 3D 箱型外观绘制。 Emacs 通常还会用与未选择窗口不同的颜色绘制所选窗口的状态栏，以使其脱颖而出。
 
-  The text displayed in the mode line has the following format:
+  在状态栏中显示的文本有以下格式:
 
 @example
  @var{cs}:@var{ch}-@var{fr}  @var{buf}      @var{pos} @var{line}   (@var{major} @var{minor})
 @end example
 
 @noindent
-On a text terminal, this text is followed by a series of dashes
-extending to the right edge of the window.  These dashes are omitted
-on a graphical display.
+在文本终端上，此文本后跟一系列延伸到窗格右边缘的破折号。 这些破折号在图形显示中被省略。
 
-The @var{cs} string and the colon character after it describe the
-character set and newline convention used for the current buffer.
-Normally, Emacs automatically handles these settings for you, but it
-is sometimes useful to have this information.
+@var{cs} 字符串及其后面的冒号字符描述用于当前缓冲区的字符集和换行符约定。通常，Emacs 会自动为你处理这些设置，但有时拥有这些信息很有用。
 
-  @var{cs} describes the character set of the text in the buffer
-(@pxref{Coding Systems}).  If it is a dash (@samp{-}), that indicates
-no special character set handling (with the possible exception of
-end-of-line conventions, described in the next paragraph).  @samp{=}
-means no conversion whatsoever, and is usually used for files
-containing non-textual data.  Other characters represent various
-@dfn{coding systems}---for example, @samp{1} represents ISO Latin-1.
+@var{cs} 描述缓冲区 中文本的字符集（@pxref{Coding Systems}） 。 如果是短划线 （@samp{-}），则表示没有特殊的字符集处理（行尾约定可能除外，将在下一段中介绍）。 @samp{=} 表示不进行任何转换，通常用于包含非文本数据的文件。 其他字符表示各种@dfn{编码系统}---例如，@samp{1} 表示 ISO Latin-1。
 
-  On a text terminal, @var{cs} is preceded by two additional
-characters that describe the coding systems for keyboard input and
-terminal output.  Furthermore, if you are using an input method,
-@var{cs} is preceded by a string that identifies the input method
-(@pxref{Input Methods}).
+在文本终端上，@var{cs} 前面有两个附加字符，用于描述键盘输入和终端输出的编码系统。 此外，如果使用的是输入法，则 @var{cs} 前面有一个用于标识输入法的字符串 （@pxref{Input Methods}）。
 
 @cindex end-of-line convention, mode-line indication
-  The character after @var{cs} is usually a colon.  If a different
-string is displayed, that indicates a nontrivial end-of-line
-convention for encoding a file.  Usually, lines of text are separated
-by @dfn{newline characters} in a file, but two other conventions are
-sometimes used.  The MS-DOS convention uses a carriage return
-character followed by a linefeed character; when editing such
-files, the colon changes to either a backslash (@samp{\}) or
-@samp{(DOS)}, depending on the operating system.  Another convention,
-employed by older Macintosh systems, uses a carriage return
-character instead of a newline; when editing such files, the colon
-changes to either a forward slash (@samp{/}) or @samp{(Mac)}.  On some
-systems, Emacs displays @samp{(Unix)} instead of the colon for files
-that use newline as the line separator.
+@c    The character after @var{cs} is usually a colon.  If a different string is displayed, that indicates a nontrivial end-of-line convention for encoding a file.  Usually, lines of text are separated by @dfn{newline characters} in a file, but two other conventions are sometimes used.  The MS-DOS convention uses a carriage return character followed by a linefeed character; when editing such files, the colon changes to either a backslash (@samp{\}) or @samp{(DOS)}, depending on the operating system.  Another convention, employed by older Macintosh systems, uses a carriage return character instead of a newline; when editing such files, the colon changes to either a forward slash (@samp{/}) or @samp{(Mac)}.  On some systems, Emacs displays @samp{(Unix)} instead of the colon for files that use newline as the line separator.@var{cs} 
+后面的字符通常是冒号。 如果显示不同的字符串，则表示对文件进行编码的行尾约定不平凡。 通常，文件中的文本行用 @dfn{newline characters} 分隔，但有时也会使用另外两种约定。 MS-DOS 约定使用回车符后跟换行符;编辑此类文件时，冒号将更改为反斜杠 （@samp{\}） 或 @samp{（DOS）}，具体取决于操作系统。 旧版 Macintosh 系统采用的另一种约定是使用回车符而不是换行符;编辑此类文件时，冒号将更改为正斜杠 （@samp{/}） 或 @samp{（Mac）}。 在某些系统上，对于使用换行符作为行分隔符的文件，Emacs 显示 @samp{（Unix）} 而不是冒号。
 
   On frames created for @command{emacsclient} (@pxref{Invoking
 emacsclient}), the next character is @samp{@@}.  This indication is
