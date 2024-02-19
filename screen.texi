@@ -107,10 +107,7 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 @c    The character after @var{cs} is usually a colon.  If a different string is displayed, that indicates a nontrivial end-of-line convention for encoding a file.  Usually, lines of text are separated by @dfn{newline characters} in a file, but two other conventions are sometimes used.  The MS-DOS convention uses a carriage return character followed by a linefeed character; when editing such files, the colon changes to either a backslash (@samp{\}) or @samp{(DOS)}, depending on the operating system.  Another convention, employed by older Macintosh systems, uses a carriage return character instead of a newline; when editing such files, the colon changes to either a forward slash (@samp{/}) or @samp{(Mac)}.  On some systems, Emacs displays @samp{(Unix)} instead of the colon for files that use newline as the line separator.@var{cs} 
 后面的字符通常是冒号。 如果显示不同的字符串，则表示对文件进行编码的行尾约定不平凡。 通常，文件中的文本行用 @dfn{newline characters} 分隔，但有时也会使用另外两种约定。 MS-DOS 约定使用回车符后跟换行符;编辑此类文件时，冒号将更改为反斜杠 （@samp{\}） 或 @samp{（DOS）}，具体取决于操作系统。 旧版 Macintosh 系统采用的另一种约定是使用回车符而不是换行符;编辑此类文件时，冒号将更改为正斜杠 （@samp{/}） 或 @samp{（Mac）}。 在某些系统上，对于使用换行符作为行分隔符的文件，Emacs 显示 @samp{（Unix）} 而不是冒号。
 
-  On frames created for @command{emacsclient} (@pxref{Invoking
-emacsclient}), the next character is @samp{@@}.  This indication is
-typical for frames of an Emacs process running as a daemon
-(@pxref{Emacs Server}).
+  在为 @command{emacsclient} （@pxref{Invoking emacsclient}） 而创建的帧上，下一个字符为 @samp{@@}。 此指示是作为守护进程 x（@pxref{Emacs Server}） 运行的 Emacs 进程帧的典型指示。  On frames created for @command{emacsclient} (@pxref{Invoking emacsclient}), the next character is @samp{@@}.  This indication is typical for frames of an Emacs process running as a daemon x(@pxref{Emacs Server}).
 
   The next element on the mode line is the string indicated by
 @var{ch}.  This shows two dashes (@samp{--}) if the buffer displayed
