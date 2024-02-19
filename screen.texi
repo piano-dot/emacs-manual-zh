@@ -1,4 +1,4 @@
-@c This is part of the Emacs manual.
+'@c This is part of the Emacs manual.
 @c Copyright (C) 1985--1987, 1993--1995, 1997, 2001--2024 Free Software
 @c Foundation, Inc.
 @c See file emacs.texi for copying conditions.
@@ -99,7 +99,7 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 
 @var{cs} 字符串及其后面的冒号字符描述用于当前缓冲区的字符集和换行符约定。通常，Emacs 会自动为你处理这些设置，但有时拥有这些信息很有用。
 
-@var{cs} 描述缓冲区 中文本的字符集（@pxref{Coding Systems}） 。 如果是短划线 （@samp{-}），则表示没有特殊的字符集处理（行尾约定可能除外，将在下一段中介绍）。 @samp{=} 表示不进行任何转换，通常用于包含非文本数据的文件。 其他字符表示各种@dfn{编码系统}---例如，@samp{1} 表示 ISO Latin-1。
+@var{cs} 描述缓冲区中文本的字符集（@pxref{Coding Systems}） 。 如果是短划线 （@samp{-}），则表示没有特殊的字符集处理（行尾约定可能除外，将在下一段中介绍）。 @samp{=} 表示不进行任何转换，通常用于包含非文本数据的文件。 其他字符表示各种@dfn{编码系统}---例如，@samp{1} 表示 ISO Latin-1。
 
 在文本终端上，@var{cs} 前面有两个附加字符，用于描述键盘输入和终端输出的编码系统。 此外，如果使用的是输入法，则 @var{cs} 前面有一个用于标识输入法的字符串 （@pxref{Input Methods}）。
 
@@ -107,34 +107,19 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 @c    The character after @var{cs} is usually a colon.  If a different string is displayed, that indicates a nontrivial end-of-line convention for encoding a file.  Usually, lines of text are separated by @dfn{newline characters} in a file, but two other conventions are sometimes used.  The MS-DOS convention uses a carriage return character followed by a linefeed character; when editing such files, the colon changes to either a backslash (@samp{\}) or @samp{(DOS)}, depending on the operating system.  Another convention, employed by older Macintosh systems, uses a carriage return character instead of a newline; when editing such files, the colon changes to either a forward slash (@samp{/}) or @samp{(Mac)}.  On some systems, Emacs displays @samp{(Unix)} instead of the colon for files that use newline as the line separator.@var{cs} 
 后面的字符通常是冒号。 如果显示不同的字符串，则表示对文件进行编码的行尾约定不平凡。 通常，文件中的文本行用 @dfn{newline characters} 分隔，但有时也会使用另外两种约定。 MS-DOS 约定使用回车符后跟换行符;编辑此类文件时，冒号将更改为反斜杠 （@samp{\}） 或 @samp{（DOS）}，具体取决于操作系统。 旧版 Macintosh 系统采用的另一种约定是使用回车符而不是换行符;编辑此类文件时，冒号将更改为正斜杠 （@samp{/}） 或 @samp{（Mac）}。 在某些系统上，对于使用换行符作为行分隔符的文件，Emacs 显示 @samp{（Unix）} 而不是冒号。
 
-  在为 @command{emacsclient} （@pxref{Invoking emacsclient}） 而创建的帧上，下一个字符为 @samp{@@}。 此指示是作为守护进程 x（@pxref{Emacs Server}） 运行的 Emacs 进程帧的典型指示。  On frames created for @command{emacsclient} (@pxref{Invoking emacsclient}), the next character is @samp{@@}.  This indication is typical for frames of an Emacs process running as a daemon x(@pxref{Emacs Server}).
+  在为 @command{emacsclient} （@pxref{Invoking emacsclient}） 而创建的窗口上，下一个字符为 @samp{@@}。 此指示是作为守护进程 x（@pxref{Emacs Server}） 运行的 Emacs 进程帧的典型指示。
+  @c This indication is typical for frames of an Emacs process running as a daemon x(@pxref{Emacs Server}).
 
-  The next element on the mode line is the string indicated by
-@var{ch}.  This shows two dashes (@samp{--}) if the buffer displayed
-in the window has the same contents as the corresponding file on the
-disk; i.e., if the buffer is unmodified.  If the buffer is
-modified, it shows two stars (@samp{**}).  For a read-only buffer, it
-shows @samp{%*} if the buffer is modified, and @samp{%%} otherwise.
+  状态栏的下一个元素是 @var{ch} 所指示的字符串。 如果窗格中显示的缓冲区与磁盘上相应文件的内容相同（即缓冲区未修改），则显示两个连字符（@samp{--}）。 如果缓冲区已修改，则显示两颗星（@samp{**}）。 对于只读缓冲区，如果缓冲区已修改，则显示 @samp{%*}，否则显示 @samp{%%}。
 
-  The character after @var{ch} is normally a dash (@samp{-}).
-However, if @code{default-directory} (@pxref{File Names}) for the
-current buffer is on a remote machine, @samp{@@} is displayed instead.
+@c The character after @var{ch} is normally a dash (@samp{-}). However, if @code{default-directory} (@pxref{File Names}) for the current buffer is on a remote machine, @samp{@@} is displayed instead.
+  @var{ch} 后面的字符通常是连字符（@samp{-}）。但是，如果 @code{default-directory}（@pxref{文件名}）的当前缓冲区位于远程计算机上，则会显示 @samp{@@}。
 
-  @var{fr} gives the selected frame name (@pxref{Frames}).  It appears
-only on text terminals.  The initial frame's name is @samp{F1}.
+  @var{fr} 给出选定的帧名称 （@pxref{Frames}）。 它仅显示在文本终端上。 初始帧的名称为 @samp{F1}。
 
-  @var{buf} is the name of the buffer displayed in the window.
-Usually, this is the same as the name of a file you are editing.
-@xref{Buffers}.
+  @var{buf}是窗口中显示的缓冲区的名称。 通常，这与您正在编辑的文件的名称相同。 @xref{Buffers}.
 
-  @var{pos} tells you whether there is additional text above the top
-of the window, or below the bottom.  If your buffer is small and all
-of it is visible in the window, @var{pos} is @samp{All}.  Otherwise,
-it is @samp{Top} if you are looking at the beginning of the buffer,
-@samp{Bot} if you are looking at the end of the buffer, or
-@samp{@var{nn}%}, where @var{nn} is the percentage of the buffer above
-the top of the window.  With Size Indication mode, you can display the
-size of the buffer as well.  @xref{Optional Mode Line}.
+  @var{pos} 告诉您窗口顶部上方还是底部下方是否有其他文本。 If your buffer is small and all of it is visible in the window, @var{pos} is All.  Otherwise, it is @samp{Top} if you are looking at the beginning of the buffer, @samp{Bot} if you are looking at the end of the buffer, or @samp{@var{nn}%}, where @var{nn} is the percentage of the buffer above the top of the window.  With Size Indication mode, you can display the size of the buffer as well.  @xref{Optional Mode Line}.
 
   @var{line} is the character @samp{L} followed by the line number at
 point.  (You can display the current column number too, by turning on
