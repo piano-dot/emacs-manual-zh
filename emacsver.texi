@@ -1,2 +1,3 @@
 @c configure generates emacsver.texi from emacsver.texi.in via a Makefile rule
 @set EMACSVER 29.2
+
