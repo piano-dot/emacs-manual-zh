@@ -1,19 +1,18 @@
 @node Distrib
 @unnumbered 分发
 @unnumberedsec 分发（中文翻译）
-GNU Emacs 是 @dfn{自由软件};这意味着每个人都可以自由使用它，并且可以在特定条件下自由地重新分发它。 GNU Emacs 不属于公有领域;它是受版权保护的，并且对其分发有限制，但这些限制旨在允许一个好的合作公民想要做的一切。不允许的是试图阻止其他人进一步分享他们可能从您那里获得的任何版本的 GNU Emacs。 确切的条件可以在 Emacs 附带的 “GNU 通用公共许可证”( GNU GENERAL PUBLIC LICENSE) 中找到@footnote{本手册本身采用 GNU Free Documentation License。 该许可证与 GNU 通用公共许可证的精神相似，但更适用于文档。@xref{GNU Free Documentation License}.}，也出现在本手册中的
-@ref{Copying}，您也可以前往@ref{Copying-zh}，来查看GPL的一份非官方中文翻译。
+GNU Emacs 是 @dfn{自由软件};这意味着每个人都可以自由使用它，并且可以在特定条件下自由地重新分发它。 GNU Emacs 不属于公有领域;它是受版权保护的，并且对其分发有限制，但这些限制旨在允许一个会合作的好公民想要做的一切。不允许的是试图阻止其他人进一步分享他们可能从您那里获得的任何版本的 GNU Emacs。 确切的条件可以在 Emacs 附带的 “GNU 通用公共许可证”( GNU GENERAL PUBLIC LICENSE) 中找到@footnote{本手册本身采用 GNU Free Documentation License。 该许可证与 GNU 通用公共许可证的精神相似，但更适用于文档。@xref{GNU Free Documentation License}.}，也出现在本手册中的
+@ref{Copying}，您也可以前往@ref{Copying-zh}，来查看Gnu General Public License的一份非官方中文翻译。
 
 获得 GNU Emacs 副本的一种方法是从拥有它的人那里。
 您无需征得我们的许可，也无需告知其他任何人;
 只需复制它。 如果您可以访问 Internet，则可以通过匿名FTP获得
 GNU Emacs的最新发行版本;看
-@url{https://www.gnu.org/software/emacs} 在我们的网站上了解更多信息
+@url{https://www.gnu.org/software/emacs} 来在我们的网站上了解更多信息
 信息。
 
 
-当您购买计算机时，您也可能收到 GNU Emacs。 计算机制造商可以按照适用于以下条件的相同条款自由分发副本：
-别人。 这些条款要求他们为您提供完整的源代码，包括他们可能所做的任何更改，并允许您根据通用公共许可证的通常条款重新分发从他们那里收到的 GNU Emacs。 换句话说，当您获得该程序时，该程序必须对您免费，而不仅仅是对制造商免费。
+当您购买计算机时，您也可能收到 GNU Emacs。 计算机制造商可以按照相同条款自由的分发副本给别人。 这些条款要求他们为您提供完整的源代码，包括他们可能所做的任何更改，并允许您根据GNU General Public License的通常条款重新分发从他们那里收到的 GNU Emacs。 换句话说，当您获得该程序时，该程序必须对您自由，而不仅仅是对制造商自由。
 
 如果您觉得 GNU Emacs 有用，请@strong{捐款}给自由软件基金会来支持我们的工作。 在美国对自由软件基金会的捐款免税。 如果您在工作场所使用 GNU Emacs，也请建议公司捐款。
 要捐款，请参阅 @url{https://my.fsf.org/donate/}。
@@ -21,7 +20,7 @@ GNU Emacs的最新发行版本;看
 @url{https://www.gnu.org/help/help.html}。
 
 
-@unnumberedsec Distribution
+@unnumberedsec Distribution（英文原版）
 @footnote{本部分因为FDL许可证要求而被保留。}
 GNU Emacs is @dfn{free software}; this means that everyone is free to
 use it and free to redistribute it under certain conditions.  GNU Emacs

@@ -117,10 +117,10 @@ developing GNU and promoting software freedom.''
 英文原版由Free Software Foundation发布 @*
 51 Franklin Street, Fifth Floor @*
 Boston, MA 02110-1301 USA @*
-ISBN 978-0-9831592-8-5
+@c ISBN 978-0-9831592-8-5
 
 @sp 2
-Cover art by Etienne Suvasa; cover design by FSF staff.
+@c Cover art by Etienne Suvasa; cover design by FSF staff.
 
 @end titlepage
 
@@ -214,7 +214,7 @@ Info文件和印刷书籍包含基本相同的文本
 Customizable Self-Documenting Display Editor》(英语)}，可以从
 @url{https://dspace.mit.edu/handle/1721.1/5736}查阅.
 本版本的手册主要用于安装在 GNU 和 Unix 系统上的 GNU Emacs。 GNU Emacs 也可以在 MS-DOS、Microsoft Windows 和 Macintosh 系统上使用。 本手册的 Info 文件版本包含有关在这些系统上使用 Emacs 的更多信息。 这些系统使用不同的文件名语法;此外，MS-DOS 不支持所有 GNU Emacs 功能。
-请参阅 @xref{Microsoft Windows}来查阅在Windows上使用Emacs的信息。  也请参阅@xref{Mac OS / GNUstep}来认识在Macintosh和GNUStep上使用Emacs的信息。 
+请参阅 @ref{Microsoft Windows}来查阅在Windows上使用Emacs的信息。  也请参阅@ref{Mac OS / GNUstep}来认识在Macintosh和GNUStep上使用Emacs的信息。 
 @c end iftex
 @include distrib.texi
 
@@ -374,8 +374,7 @@ Neal Ziring, Teodor Zlatanov, and Detlev Zundel.
   @dfn{自我描述} 意味着您可以随时使用称为 @dfn{帮助命令} 的特殊命令来查找您的选项，或查找任何命令的作用，或查找与给定主题相关的所有命令。 请参阅@ref{Help}。
 
   @dfn{可定制的} 意味着您可以轻松更改
-Emacs 命令的简单方法。 例如，如果您使用编程
-在以 @samp{<**} 开头并以 @samp{**>} 结尾的注释语言中，你可以告诉 Emacs 注释操作命令
+Emacs 的命令。 例如，如果您是个程序员，在以 @samp{<**} 开头并以 @samp{**>} 结尾的注释语言中，你可以告诉 Emacs 注释操作命令来
 使用这些字符串 （@pxref{Comments}）。 再举一个例子，你
 可以重新绑定基本的光标运动命令（上、下、左、右）
 到键盘上您觉得舒服的任何键。
