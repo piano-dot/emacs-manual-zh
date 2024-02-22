@@ -7,6 +7,7 @@
 @include docstyle.texi
 @include emacsver.texi
 @xrefautomaticsectiontitle on
+@afourpaper
 
 @c When printing, define EDITION to be the printed edition number, in
 @c the preferred style for ordinal edition numbers.  E.g., run the
@@ -97,8 +98,7 @@ developing GNU and promoting software freedom.''
 @sp 6
 @center @titlefont{GNU Emacs 手册}
 @sp 2
-@center A GNU Manual
-@center 一个 GNU 手册
+@center A GNU Manual@ @ @ @ @ @ @ @ 一个 GNU 手册
 @sp 4
 @ifset EDITION
 @center @value{EDITION}版，为 Emacs @value{EMACSVER}更新。
@@ -108,7 +108,7 @@ developing GNU and promoting software freedom.''
 @end ifclear
 @sp 5
 @center [美]Richard Stallman 等人编写
-@center 林羿轩 等人翻译
+@center 林羿轩@ 等人翻译
 @page
 @vskip 0pt plus 1filll
 @insertcopying
@@ -356,7 +356,7 @@ Neal Ziring, Teodor Zlatanov, and Detlev Zundel.
 
 @node Intro
 @unnumbered 介绍
-您正在阅读 GNU Emacs，它是 GNU 对于 Emacs ，一个高级的、自我描述的、可定制的、可扩展的编辑器 Emacs 的呈现。
+您正在阅读的是有关 GNU Emacs，它是 GNU 对于这个高级的、自我描述的、可定制的、可扩展的编辑器 Emacs 的呈现。
 (
 @c Workaround makeinfo 4 bug.
 @c https://lists.gnu.org/r/bug-texinfo/2004-08/msg00009.html
@@ -381,9 +381,14 @@ Emacs 命令的简单方法。 例如，如果您使用编程
 到键盘上您觉得舒服的任何键。
 @xref{Customization}。
 
-@dfn{Extensible} 意味着你可以超越简单的定制，创建全新的命令。 新命令只是用 Lisp 语言编写的程序，由 Emacs 自带的 Lisp 解释器运行。 现有的命令甚至可以在编辑过程中重新定义，而无需重新启动 Emacs。 Emacs 中的大多数编辑命令都是用 Lisp 写成的；少数的命令本可以用 Lisp 写成，但为了提高效率，它们改用了 C 语言。如果你想学习 Emacs Lisp 编程，可以阅读 @ref{Top, Emacs Lisp Intro, Preface, eintr, An Introduction to Programming in Emacs Lisp}。
-
-  
+@dfn{Extensible} 意味着你可以超越简单的定制，创建全新的命令。 新命令只是用 Lisp 语言编写的程序，由 Emacs 自带的 Lisp 解释器运行。 现有的命令甚至可以在编辑过程中重新定义，而无需重新启动 Emacs。 Emacs 中的大多数编辑命令都是用 Lisp 写成的；少数的命令本可以用 Lisp 写成，但为了提高效率，它们改用了 C 语言。如果你想学习 Emacs Lisp 编程，可以阅读
+@ifnottex
+@ref{Top, Emacs Lisp Intro, Preface, eintr, An Introduction to Programming in Emacs Lisp}。
+@end ifnottex
+@iftex
+在 An Introduction to
+Programming in Emacs Lisp 中“Preface” 一节。
+@end iftex
 
 @include screen.texi
 @include commands.texi

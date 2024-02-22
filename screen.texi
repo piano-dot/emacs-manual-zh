@@ -81,7 +81,7 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
   回显区域还用于显示 @dfn{小缓冲区}，这是一个特殊的窗格，您可以在其中输入命令的参数，例如要编辑的文件的名称。 使用小缓冲区时，回显区域中显示的文本以 @dfn{prompt string} 开头，活动光标出现在微型缓冲区中，暂时将其视为选定的窗口。 您始终可以通过键入 @kbd{C-g} 来退出 minibuffer。 @xref{Minibuffer}。
 
 @node Mode Line
-@section The Mode Line
+@section 状态栏
 @cindex mode line
 @cindex top level
 
@@ -118,7 +118,8 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 
   @var{buf}是窗口中显示的缓冲区的名称。 通常，这与您正在编辑的文件的名称相同。 @xref{Buffers}.
 
-  @var{pos} 告诉您窗口顶部上方还是底部下方是否有其他文本。 If your buffer is small and all of it is visible in the window, @var{pos} is All.  Otherwise, it is @samp{Top} if you are looking at the beginning of the buffer, @samp{Bot} if you are looking at the end of the buffer, or @samp{@var{nn}%}, where @var{nn} is the percentage of the buffer above the top of the window.  With Size Indication mode, you can display the size of the buffer as well.  @xref{Optional Mode Line}.
+  @var{pos} 告诉您窗口顶部上方还是底部下方是否有其他文本。如果你的缓冲区里面的内容小，而其全部都能被看见，@var{pos} 就会是@samp{All}（全部）。 其他情况下,如果你看见了缓冲区的顶部，就是 @samp{Top}；如果你看见的是其底部，就是@samp{Bot}；或者是 @samp{@var{nn}%}，此处 @var{nn} 是缓冲区高于窗格顶部的百分比。
+  With Size Indication mode, you can display the size of the buffer as well.  @xref{Optional Mode Line}.
 
   @var{line} is the character @samp{L} followed by the line number at
 point.  (You can display the current column number too, by turning on
