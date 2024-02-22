@@ -51,8 +51,8 @@ developing GNU and promoting software freedom.''
 @quotation
 您有在 Free Software Foundation发布的GNU Free Documentation License 第1.3版或之后版本的约束下对其进行再发布及修改的权利。 恒定章节为 ``The GNU Manifesto,'' ``分发'' ``(中文版)GNU GENERAL PUBLIC LICENSE'' 和
 ``GNU GENERAL PUBLIC LICENSE'' , 前封面文字为 ``A GNU
-Manual,''后封面文字如下(a).  本书的FDL许可证可以在 ``GNU Free Documentation
-License.''找到.
+Manual,''后封面文字如下(a).  FDL许可证副本可以在 ``GNU Free Documentation
+License.''一章或源代码中LICENSE文件中找到.
 
 (a) FSF的后封面文字为: ``You have the freedom to copy and
 modify this GNU manual.  Buying copies from the FSF supports it in
