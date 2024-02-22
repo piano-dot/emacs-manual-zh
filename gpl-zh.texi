@@ -24,14 +24,14 @@ terms for software that uses the GNU GPL--only the original English text (@ref{C
 does that. However, we hope that this translation will help Chinese speakers understand
 the GNU GPL better.
     这是GNU通用公共许可协议的一份非官方中文翻译，并非自由软件基金会所发表，不适用于
-使用GNU通用公共许可协议发布的软件的法律声明——只有GNU通用公共许可协议英文原版 @ref{Copying}才具
+使用GNU通用公共许可协议发布的软件的法律声明——只有GNU通用公共许可协议英文原版 (@ref{Copying})才具
 有法律效力。不过我们希望本翻译能够帮助中文读者更好地理解GNU通用公共许可协议。 
 
 You may publish this translation, modified or unmodified, only under the terms at
 @url{https://www.gnu.org/licenses/translations.html}.
 @end display
 
-@heading Preamble
+@heading 前言
 
     GNU通用公共许可协议是一份面向软件及其他类型作品的，自由的版权共产协议。
 

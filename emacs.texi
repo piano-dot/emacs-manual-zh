@@ -435,7 +435,7 @@ Programming in Emacs Lisp 中“Preface” 一节。
 @include gpl.texi
 
 @node Copying-zh
-@appendix (中文翻译)GNU 通用公共许可证
+@appendix (中文翻译)GNU 通用公共许可协议
 @include gpl-zh.texi
 
 @node GNU Free Documentation License
