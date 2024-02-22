@@ -386,7 +386,7 @@ Emacs 命令的简单方法。 例如，如果您使用编程
 @ref{Top, Emacs Lisp Intro, Preface, eintr, An Introduction to Programming in Emacs Lisp}。
 @end ifnottex
 @iftex
-在 An Introduction to
+An Introduction to
 Programming in Emacs Lisp 中“Preface” 一节。
 @end iftex
 
