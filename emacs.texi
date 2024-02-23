@@ -442,6 +442,10 @@ Programming in Emacs Lisp 中“Preface” 一节。
 @appendix GNU Free Documentation License
 @include doclicense.texi
 
+@node FDL-zh
+@appendix (中文翻译)GNU 自由文档许可证
+@include fdl-zh.texi
+
 @include cmdargs.texi
 @include xresources.texi
 
