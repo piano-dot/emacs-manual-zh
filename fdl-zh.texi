@@ -7,11 +7,18 @@
 @display
 版权所有 (C) 2000, 2001, 2002, 2007, 2008 自由软件基金会 http://fsf.org/
 
-任何人皆可复制和分发本许可证的完整副本，但不允许修改。Copyright @copyright{} 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+任何人皆可复制和分发本许可证的完整副本，但不允许修改。
 
-This is an unofficial translation of the GNU Free Documentation License into Simplified Chinese. It was not published by the Free Software Foundation, and does not legally state the distribution terms for documents that use the GNU FDL—only the original English text of the GNU FDL does that. However, we hope that this translation will help Simplified Chinese speakers understand the GNU FDL better. You may publish this translation, modified or unmodified, only under the terms at @url{http://www.gnu.org/licenses/translations.html}.
+Copyright @copyright{} 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
 
-这是 GNU 自由文档许可证（GNU FDL）的非正式简体中文翻译。它并未被自由软件基金会发行，也不是使用 GNU FDL 文档的发布法律声明——只有 GNU GPL 的原始英文版才有法律意义。不过，我们希望该翻译能够帮助简体中文用户更好地理解 GNU FDL。你可以发布本翻译或其修改版，前提是要遵守此处的条款：@url{http://www.gnu.org/licenses/translations.html}。
+This is an unofficial translation of the GNU Free Documentation License into Simplified Chinese.
+It was not published by the Free Software Foundation, and does not legally state the
+distribution terms for documents that use the GNU FDL—only the original English text of
+the GNU FDL does that. However, we hope that this translation will help Simplified Chinese speakers understand the GNU FDL better.
+
+这是 GNU 自由文档许可证（GNU FDL）的非正式简体中文翻译。它并未被自由软件基金会发行，也不是使用 GNU FDL 文档的发布法律声明——只有 GNU FDL 的原始英文版才有法律意义。不过，我们希望该翻译能够帮助简体中文用户更好地理解 GNU FDL。
+
+ You may publish this translation, modified or unmodified, only under the terms at @url{http://www.gnu.org/licenses/translations.html}.
 @end display
 
 @enumerate 0
