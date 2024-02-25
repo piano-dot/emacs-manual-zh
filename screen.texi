@@ -143,38 +143,14 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 
   在支持鼠标的显示器上，可以使用鼠标从菜单栏中选择命令。 菜单项如果右边缘有箭头，表示它指向子菜单，即 @dfn{submenu}。  菜单项末尾的 @samp{...} 表示该命令将在实际执行任何操作之前需要您进一步输入。
 
-  Some of the commands in the menu bar have ordinary key bindings as
-well; if so, a key binding is shown after the item itself.  To view
-the full command name and documentation for a menu item, type
-@kbd{C-h k}, and then select the menu bar with the mouse in the usual
-way (@pxref{Key Help}).
+  菜单栏中的某些命令也有普通按键绑定它；如果有，按键绑定会显示在项目本身之后。 要查看菜单项的完整命令名称和文档，请键入 @kbd{C-h k}，然后用鼠标按常规方法（@pxref{Key Help}）选择菜单栏。
 
 @kindex F10
 @findex menu-bar-open
 @cindex menu bar access using keyboard
-  Instead of using the mouse, you can also invoke the first menu bar
-item by pressing @key{F10} (to run the command @code{menu-bar-open}).
-You can then navigate the menus with the arrow keys or with @kbd{C-b},
-@kbd{C-f} (left/right), @kbd{C-p}, and @kbd{C-n} (up/down).  To
-activate a selected menu item, press @key{RET}; to cancel menu
-navigation, press @kbd{C-g} or @kbd{@key{ESC} @key{ESC} @key{ESC}}.
-(However, note that when Emacs was built with a GUI toolkit, the menus
-are drawn and controlled by the toolkit, and the key sequences to
-cancel menu navigation might be different from the above description.)
+  您也可以按 @key{F10}（执行命令 @code{menu-bar-open}）来调用第一个菜单栏的项目，而不是使用鼠标。然后，您可以使用箭头键或 @kbd{C-b}、@kbd{C-f}（左/右）、@kbd{C-p} 和 @kbd{C-n}（上/下）浏览菜单。 要激活所选菜单项，请按 @key{RET}；要取消菜单导航，请按 @kbd{C-g} 或 @kbd{ @key{ESC} @key{ESC} @key{ESC}} （不过请注意，如果 Emacs 是使用图形用户界面工具包构建的，则菜单由图形界面绘制和控制，取消菜单导航的按键顺序可能与上述描述不同）。
 
 @kindex M-`
 @findex tmm-menubar
 @vindex tty-menu-open-use-tmm
-  On a text terminal, you can optionally access the menu-bar menus in
-the echo area.  To this end, customize the variable
-@code{tty-menu-open-use-tmm} to a non-@code{nil} value.  Then typing
-@key{F10} will run the command @code{tmm-menubar} instead of dropping
-down the menu.  (You can also type @kbd{M-`}, which always invokes
-@code{tmm-menubar}.)  @code{tmm-menubar} lets you select a menu item
-with the keyboard.  A provisional choice appears in the echo area.
-You can use the up and down arrow keys to move through the menu to
-different items, and then you can type @key{RET} to select the item.
-Each menu item is also designated by a letter or digit (usually the
-initial of some word in the item's name).  This letter or digit is
-separated from the item name by @samp{==>}.  You can type the item's
-letter or digit to select the item.
+  在文本终端上，也可以选择在回显区访问菜单栏菜单。 为此，请将变量 @code{tty-menu-open-use-tmm} 自定义为 non-@code{nil} 值。 然后键入 @key{F10} 将运行 @code{tty-menu-open-use-tmm} 命令，而不是下拉菜单。 (您也可以键入 @kbd{M-`}，它将始终调用 @code{tmm-menubar}。）@code{tmm-menubar} 可让您用键盘选择菜单项。 临时选择会出现在回显区。您可以使用上下箭头键在菜单中移动到不同的项目，然后键入 @key{RET} 来选择项目。每个菜单项也由一个字母或数字（通常是项目名称中某个单词的首字母）指定。 该字母或数字与项目名称之间用 @samp{==>} 分隔。 您可以键入项目的字母或数字来选择项目。
