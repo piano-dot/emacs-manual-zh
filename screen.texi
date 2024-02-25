@@ -136,7 +136,7 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
   您可以更改状态栏的外观以及内容格式。 @xref{Optional Mode Line}。 此外，状态栏对鼠标敏感；点击状态栏的不同部分可执行各种命令。 @xref{Mode Line Mouse}。 同时，将鼠标指针悬停在状态栏的鼠标敏感部分上方，会显示工具提示（@pxref{Tooltips}），其中包含通过点击状态栏可以调用的命令信息。
 
 @node Menu Bar
-@section The Menu Bar
+@section 菜单栏
 @cindex menu bar
 
   每个 Emacs 窗口的顶部通常都有一个 @dfn{菜单栏}，您可以使用它来执行常用操作。其实没有必要在这里列出它们，因为您可以更容易地自己看到它们。
