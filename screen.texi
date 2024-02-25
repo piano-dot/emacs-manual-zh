@@ -139,15 +139,9 @@ Emacs 占用的图形窗口或终端屏幕。 Emacs 在这两种窗口上的行�
 @section The Menu Bar
 @cindex menu bar
 
-  Each Emacs frame normally has a @dfn{menu bar} at the top which you
-can use to perform common operations.  There's no need to list them
-here, as you can more easily see them yourself.
+  每个 Emacs 窗口的顶部通常都有一个 @dfn{菜单栏}，您可以使用它来执行常用操作。其实没有必要在这里列出它们，因为您可以更容易地自己看到它们。
 
-  On a display that supports a mouse, you can use the mouse to choose a
-command from the menu bar.  An arrow on the right edge of a menu item
-means it leads to a subsidiary menu, or @dfn{submenu}.  A @samp{...}
-at the end of a menu item means that the command will prompt you for
-further input before it actually does anything.
+  在支持鼠标的显示器上，可以使用鼠标从菜单栏中选择命令。 菜单项如果右边缘有箭头，表示它指向子菜单，即 @dfn{submenu}。  菜单项末尾的 @samp{...} 表示该命令将在实际执行任何操作之前需要您进一步输入。
 
   Some of the commands in the menu bar have ordinary key bindings as
 well; if so, a key binding is shown after the item itself.  To view
