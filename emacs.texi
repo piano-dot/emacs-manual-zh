@@ -389,6 +389,7 @@ An Introduction to
 Programming in Emacs Lisp 中“Preface” 一节。
 @end iftex
 
+@part 一切学习Emacs需要的
 @include screen.texi
 @include commands.texi
 @include entering.texi
@@ -411,6 +412,7 @@ Programming in Emacs Lisp 中“Preface” 一节。
 @include mule.texi
 @include modes.texi
 @include indent.texi
+@part 一些高级技巧
 @include text.texi
 @c Includes fortran-xtra.
 @include programs.texi
